@@ -1,0 +1,15 @@
+[
+  {
+    "_id": "667eba2a6c7e8cb84a6e1b06",
+    "user_id": "user123",
+    "property_id": "667eb7ed6c7e8cb84a6e1afe",
+    "check_in_date": "2024-07-11",
+    "check_out_date": "2024-07-15",
+    "total_price": 400,
+    "status": "confirmed",
+    "adult_guests": 3,
+    "minor_guests": 2,
+    "message": "hi, is there a money exchange office nearby?",
+    "cancellation_policy": "20"
+  }
+]

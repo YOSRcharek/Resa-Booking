@@ -1,0 +1,203 @@
+{"Hosts": [
+    {
+      "_id": "667eb9536c7e8cb84a6e1b03",
+      "name": "John Doe",
+      "email": "johndoe@example.com",
+      "phone": "+1234567890",
+      "property_id": [
+        "667eb7ed6c7e8cb84a6e1afe",
+        "667eb7ed6c7e8cb84a6e1b00"
+      ],
+      "picture": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_x_medium",
+      "about": "a host description",
+      "government_id": "123",
+      "identity_card": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_x_medium",
+      "identity_verified": true,
+      "birth_date": "2000-03-01",
+      "birth_place": "Tunisia",
+      "rating": {
+        "count": 17,
+        "average": 4.8
+      }
+    } 
+  ],"Property":[
+    {
+      "_id": "667eb7ed6c7e8cb84a6e1afe",
+      "name": "Beautiful Beach House",
+      "type": "House",
+      "place": "Entire place",
+      "description": "A beautiful house located near the beach.",
+      "location": {
+        "address": "123 Ocean Drive",
+        "city": "Miami",
+        "state": "FL",
+        "country": "USA",
+        "coordinates": {
+          "latitude": 25.790654,
+          "longitude": -80.130045
+        }
+      },
+      "tourist_tax": 150,
+      "max_guests": 4,
+      "apartment_spaces": [
+        {
+          "space_id": "1",
+          "type": "living room",
+          "area": "25 sqm",
+          "photos": [
+            "https://example.com/photos/living_room1.jpg",
+            "https://example.com/photos/living_room2.jpg"
+          ]
+        },
+        {
+          "space_id": "2",
+          "type": "room",
+          "area": "15 sqm",
+          "photos": [
+            "https://example.com/photos/room1.jpg",
+            "https://example.com/photos/room2.jpg"
+          ]
+        },
+        {
+          "space_id": "3",
+          "type": "bathroom",
+          "area": "5 sqm",
+          "photos": [
+            "https://example.com/photos/bathroom1.jpg",
+            "https://example.com/photos/bathroom2.jpg"
+          ]
+        },
+        {
+          "space_id": "4",
+          "type": "toilet",
+          "area": "2 sqm",
+          "photos": [
+            "https://example.com/photos/toilet1.jpg"
+          ]
+        },
+        {
+          "space_id": "5",
+          "type": "kitchen",
+          "area": "10 sqm",
+          "photos": [
+            "https://example.com/photos/kitchen1.jpg",
+            "https://example.com/photos/kitchen2.jpg"
+          ]
+        }
+      ],
+      "policies": {
+        "smoking": false,
+        "pets": true,
+        "parties or events": true,
+        "Check-in_start": "2pm",
+        "Check-in_end": "4pm",
+        "Check-out_start": "7am",
+        "Check-out_end": "10pm",
+        "Quiet_Hours_start": "8pm",
+        "Quiet_hours_end": "7am",
+        "Cleaning_Maintenance": "host guidelines",
+        "Cancellation_policy": "no refund is possible",
+        "guests_allowed": false
+      },
+      "means_of_payment": [
+        "credit card",
+        "debit card",
+        "paypal",
+        "check",
+        "cash",
+        "bank transfer"
+      ],
+      "amenities": {
+        "WiFi": true,
+        "Kitchen": true,
+        "Washer": true,
+        "Dryer": true,
+        "Free_parking": true,
+        "Air_conditioning": true,
+        "Heating": true,
+        "TV": true,
+        "Hot_tub": false,
+        "Pool": false,
+        "Gym": false,
+        "Elevator": false,
+        "Wheelchair_accessible": false,
+        "Pets_allowed": false,
+        "Breakfast": false,
+        "Laptop_friendly_workspace": true,
+        "Crib": true,
+        "Hair_dryer": true,
+        "Iron": true,
+        "Essentials": true,
+        "Smoke_alarm": true,
+        "Carbon_monoxide_alarm": true,
+        "Fire_extinguisher": true,
+        "First_aid_kit": true,
+        "Lock_on_bedroom_door": true,
+        "Hangers": true,
+        "Shampoo": true,
+        "Garden_or_backyard": true,
+        "Patio_or_balcony": true,
+        "BBQ_grill": true
+      },
+      "overall_rating": 5,
+      "contact": {
+        "phone": "+1_234_567_890",
+        "email": "contact@beautifulbeachhouse.com",
+        "website": "https://www.beautifulbeachhouse.com"
+      },
+      "links": {
+        "booking_com": "https://www.booking.com/property/beautifulbeachhouse.html",
+        "google_maps": "https://maps.google.com/?q=25.790654,-80.130045"
+      },
+      "added_date": "2023-06-15",
+      "host_id": "667eb9536c7e8cb84a6e1b03",
+      "minimum_nights": 2,
+      "maximum_nights": 30,
+      "beds_number": 4
+    }   
+  ],
+  "Reservation":[
+    {
+      "_id": "667eba2a6c7e8cb84a6e1b06",
+      "user_id": "user123",
+      "property_id": "667eb7ed6c7e8cb84a6e1afe",
+      "check_in_date": "2024-07-11",
+      "check_out_date": "2024-07-15",
+      "total_price": 400,
+      "status": "confirmed",
+      "adult_guests": 3,
+      "minor_guests": 2,
+      "message": "hi, is there a money exchange office nearby?",
+      "cancellation_policy": "20"
+    }
+  ],
+  "Review":[
+    {
+      "_id": "668021d1a2c8f9c96d687a9d",
+      "date": "2024-06-28T14:00:00Z",
+      "listing_id": "listing_001",
+      "reviewer_id": "user_001",
+      "reviewer_name": "Alice Smith",
+      "comment": "The place was wonderful and the host was very accommodating. Highly recommend!"
+    }
+  ],"calendar":[
+    {
+      "_id": "667ebadc6c7e8cb84a6e1b0c",
+      "property_id": "1",
+      "available_slots": [
+        {
+          "start_time": "2024-06-30T09:00:00Z",
+          "end_time": "2024-06-30T10:00:00Z",
+          "price": "100"
+        },
+        {
+          "start_time": "2024-07-01T11:00:00Z",
+          "end_time": "2024-07-02T12:00:00Z",
+          "price": "120"
+        }
+      ]
+    }
+   
+    
+  ] 
+  }

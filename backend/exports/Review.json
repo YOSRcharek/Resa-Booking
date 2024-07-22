@@ -1,0 +1,42 @@
+[
+  {
+    "_id": "668021d1a2c8f9c96d687a9d",
+    "date": "2024-06-28T14:00:00Z",
+    "listing_id": "listing_001",
+    "reviewer_id": "user_001",
+    "reviewer_name": "Alice Smith",
+    "comment": "The place was wonderful and the host was very accommodating. Highly recommend!"
+  },
+  {
+    "_id": "668021d1a2c8f9c96d687a9e",
+    "date": "2024-06-27T10:30:00Z",
+    "listing_id": "listing_002",
+    "reviewer_id": "user_002",
+    "reviewer_name": "John Doe",
+    "comment": "Great location but the apartment could have been cleaner. Host was friendly."
+  },
+  {
+    "_id": "668021d1a2c8f9c96d687aa0",
+    "date": "2024-06-25T09:00:00Z",
+    "listing_id": "listing_004",
+    "reviewer_id": "user_004",
+    "reviewer_name": "Bob Johnson",
+    "comment": "Average stay. Some amenities were missing and the WiFi was slow. Needs improvement."
+  },
+  {
+    "_id": "668021d1a2c8f9c96d687a9f",
+    "date": "2024-06-26T16:45:00Z",
+    "listing_id": "listing_003",
+    "reviewer_id": "user_003",
+    "reviewer_name": "Jane Roe",
+    "comment": "A cozy spot right in the city center. Had a fantastic time, will book again!"
+  },
+  {
+    "_id": "668021d1a2c8f9c96d687aa1",
+    "date": "2024-06-24T13:20:00Z",
+    "listing_id": "listing_005",
+    "reviewer_id": "user_005",
+    "reviewer_name": "Emily Clark",
+    "comment": "Beautiful view and very clean. The host went above and beyond to ensure we were comfortable."
+  }
+]

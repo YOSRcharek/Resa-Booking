@@ -1,0 +1,403 @@
+[
+  {
+    "_id": "667eb7ed6c7e8cb84a6e1afe",
+    "name": "Beautiful Beach House",
+    "type": "House",
+    "place": "Entire place",
+    "description": "A beautiful house located near the beach.",
+    "location": {
+      "address": "123 Ocean Drive",
+      "city": "Miami",
+      "state": "FL",
+      "country": "USA",
+      "coordinates": {
+        "latitude": 25.790654,
+        "longitude": -80.130045
+      }
+    },
+    "tourist_tax": 150,
+    "max_guests": 4,
+    "apartment_spaces": [
+      {
+        "space_id": "1",
+        "type": "living room",
+        "area": "25 sqm",
+        "photos": [
+          "https://example.com/photos/living_room1.jpg",
+          "https://example.com/photos/living_room2.jpg"
+        ]
+      },
+      {
+        "space_id": "2",
+        "type": "room",
+        "area": "15 sqm",
+        "photos": [
+          "https://example.com/photos/room1.jpg",
+          "https://example.com/photos/room2.jpg"
+        ]
+      },
+      {
+        "space_id": "3",
+        "type": "bathroom",
+        "area": "5 sqm",
+        "photos": [
+          "https://example.com/photos/bathroom1.jpg",
+          "https://example.com/photos/bathroom2.jpg"
+        ]
+      },
+      {
+        "space_id": "4",
+        "type": "toilet",
+        "area": "2 sqm",
+        "photos": [
+          "https://example.com/photos/toilet1.jpg"
+        ]
+      },
+      {
+        "space_id": "5",
+        "type": "kitchen",
+        "area": "10 sqm",
+        "photos": [
+          "https://example.com/photos/kitchen1.jpg",
+          "https://example.com/photos/kitchen2.jpg"
+        ]
+      }
+    ],
+    "policies": {
+      "smoking": false,
+      "pets": true,
+      "parties or events": true,
+      "Check-in_start": "2pm",
+      "Check-in_end": "4pm",
+      "Check-out_start": "7am",
+      "Check-out_end": "10pm",
+      "Quiet_Hours_start": "8pm",
+      "Quiet_hours_end": "7am",
+      "Cleaning_Maintenance": "host guidelines",
+      "Cancellation_policy": "no refund is possible",
+      "guests_allowed": false
+    },
+    "means_of_payment": [
+      "credit card",
+      "debit card",
+      "paypal",
+      "check",
+      "cash",
+      "bank transfer"
+    ],
+    "amenities": {
+      "WiFi": true,
+      "Kitchen": true,
+      "Washer": true,
+      "Dryer": true,
+      "Free_parking": true,
+      "Air_conditioning": true,
+      "Heating": true,
+      "TV": true,
+      "Hot_tub": false,
+      "Pool": false,
+      "Gym": false,
+      "Elevator": false,
+      "Wheelchair_accessible": false,
+      "Pets_allowed": false,
+      "Breakfast": false,
+      "Laptop_friendly_workspace": true,
+      "Crib": true,
+      "Hair_dryer": true,
+      "Iron": true,
+      "Essentials": true,
+      "Smoke_alarm": true,
+      "Carbon_monoxide_alarm": true,
+      "Fire_extinguisher": true,
+      "First_aid_kit": true,
+      "Lock_on_bedroom_door": true,
+      "Hangers": true,
+      "Shampoo": true,
+      "Garden_or_backyard": true,
+      "Patio_or_balcony": true,
+      "BBQ_grill": true
+    },
+    "overall_rating": 5,
+    "contact": {
+      "phone": "+1_234_567_890",
+      "email": "contact@beautifulbeachhouse.com",
+      "website": "https://www.beautifulbeachhouse.com"
+    },
+    "links": {
+      "booking_com": "https://www.booking.com/property/beautifulbeachhouse.html",
+      "google_maps": "https://maps.google.com/?q=25.790654,-80.130045"
+    },
+    "added_date": "2023-06-15",
+    "host_id": "667eb9536c7e8cb84a6e1b03",
+    "minimum_nights": 2,
+    "maximum_nights": 30,
+    "beds_number": 4
+  },
+  {
+    "_id": "667eb7ed6c7e8cb84a6e1aff",
+    "name": "Cozy Mountain Cabin",
+    "type": "Cabin",
+    "place": "Entire place",
+    "description": "A cozy cabin in the mountains with stunning views.",
+    "location": {
+      "address": "456 Mountain Road",
+      "city": "Aspen",
+      "state": "CO",
+      "country": "USA",
+      "coordinates": {
+        "latitude": 39.191098,
+        "longitude": -106.817539
+      }
+    },
+    "tourist_tax": 150,
+    "max_guests": 4,
+    "apartment_spaces": [
+      {
+        "space_id": "1",
+        "type": "living room",
+        "area": "25 sqm",
+        "photos": [
+          "https://example.com/photos/living_room1.jpg",
+          "https://example.com/photos/living_room2.jpg"
+        ]
+      },
+      {
+        "space_id": "2",
+        "type": "room",
+        "area": "15 sqm",
+        "photos": [
+          "https://example.com/photos/room1.jpg",
+          "https://example.com/photos/room2.jpg"
+        ]
+      },
+      {
+        "space_id": "3",
+        "type": "bathroom",
+        "area": "5 sqm",
+        "photos": [
+          "https://example.com/photos/bathroom1.jpg",
+          "https://example.com/photos/bathroom2.jpg"
+        ]
+      },
+      {
+        "space_id": "4",
+        "type": "toilet",
+        "area": "2 sqm",
+        "photos": [
+          "https://example.com/photos/toilet1.jpg"
+        ]
+      },
+      {
+        "space_id": "5",
+        "type": "kitchen",
+        "area": "10 sqm",
+        "photos": [
+          "https://example.com/photos/kitchen1.jpg",
+          "https://example.com/photos/kitchen2.jpg"
+        ]
+      }
+    ],
+    "policies": {
+      "smoking": false,
+      "pets": true,
+      "parties or events": true,
+      "Check-in_start": "2pm",
+      "Check-in_end": "4pm",
+      "Check-out_start": "7am",
+      "Check-out_end": "10pm",
+      "Quiet_Hours_start": "8pm",
+      "Quiet_hours_end": "7am",
+      "Cleaning_Maintenance": "host guidelines",
+      "Cancellation_policy": "no refund is possible",
+      "guests_allowed": false
+    },
+    "means_of_payment": [
+      "credit card",
+      "debit card",
+      "paypal",
+      "check",
+      "cash",
+      "bank transfer"
+    ],
+    "amenities": {
+      "WiFi": true,
+      "Kitchen": true,
+      "Washer": true,
+      "Dryer": true,
+      "Free_parking": true,
+      "Air_conditioning": true,
+      "Heating": true,
+      "TV": true,
+      "Hot_tub": false,
+      "Pool": false,
+      "Gym": false,
+      "Elevator": false,
+      "Wheelchair_accessible": false,
+      "Pets_allowed": false,
+      "Breakfast": false,
+      "Laptop_friendly_workspace": true,
+      "Crib": true,
+      "Hair_dryer": true,
+      "Iron": true,
+      "Essentials": true,
+      "Smoke_alarm": true,
+      "Carbon_monoxide_alarm": true,
+      "Fire_extinguisher": true,
+      "First_aid_kit": true,
+      "Lock_on_bedroom_door": true,
+      "Hangers": true,
+      "Shampoo": true,
+      "Garden_or_backyard": true,
+      "Patio_or_balcony": true,
+      "BBQ_grill": true
+    },
+    "overall_rating": 5,
+    "contact": {
+      "phone": "+1_345_678_910",
+      "email": "contact@cozymountaincabin.com",
+      "website": "https://www.cozymountaincabin.com"
+    },
+    "links": {
+      "booking_com": "https://www.booking.com/property/cozymountaincabin.html",
+      "google_maps": "https://maps.google.com/?q=39.191098,-106.817539"
+    },
+    "added_date": "2023-07-10",
+    "host_id": "667eb9536c7e8cb84a6e1b03",
+    "minimum_nights": 2,
+    "maximum_nights": 30,
+    "beds_number": 4
+  },
+  {
+    "_id": "667eb7ed6c7e8cb84a6e1b00",
+    "name": "Modern City Apartment",
+    "type": "Apartment",
+    "place": "Private room",
+    "description": "A modern apartment in the heart of the city.",
+    "location": {
+      "address": "789 Downtown Avenue",
+      "city": "New York",
+      "state": "NY",
+      "country": "USA",
+      "coordinates": {
+        "latitude": 40.712776,
+        "longitude": -74.005974
+      }
+    },
+    "max_guests": 4,
+    "apartment_spaces": [
+      {
+        "space_id": "1",
+        "type": "living room",
+        "area": "25 sqm",
+        "photos": [
+          "https://example.com/photos/living_room1.jpg",
+          "https://example.com/photos/living_room2.jpg"
+        ]
+      },
+      {
+        "space_id": "2",
+        "type": "room",
+        "area": "15 sqm",
+        "photos": [
+          "https://example.com/photos/room1.jpg",
+          "https://example.com/photos/room2.jpg"
+        ]
+      },
+      {
+        "space_id": "3",
+        "type": "bathroom",
+        "area": "5 sqm",
+        "photos": [
+          "https://example.com/photos/bathroom1.jpg",
+          "https://example.com/photos/bathroom2.jpg"
+        ]
+      },
+      {
+        "space_id": "4",
+        "type": "toilet",
+        "area": "2 sqm",
+        "photos": [
+          "https://example.com/photos/toilet1.jpg"
+        ]
+      },
+      {
+        "space_id": "5",
+        "type": "kitchen",
+        "area": "10 sqm",
+        "photos": [
+          "https://example.com/photos/kitchen1.jpg",
+          "https://example.com/photos/kitchen2.jpg"
+        ]
+      }
+    ],
+    "policies": {
+      "smoking": false,
+      "pets": true,
+      "parties or events": true,
+      "Check-in_start": "2pm",
+      "Check-in_end": "4pm",
+      "Check-out_start": "7am",
+      "Check-out_end": "10pm",
+      "Quiet_Hours_start": "8pm",
+      "Quiet_hours_end": "7am",
+      "Cleaning_Maintenance": "host guidelines",
+      "Cancellation_policy": "no refund is possible",
+      "guests_allowed": false
+    },
+    "means_of_payment": [
+      "credit card",
+      "debit card",
+      "paypal",
+      "check",
+      "cash",
+      "bank transfer"
+    ],
+    "amenities": {
+      "WiFi": true,
+      "Kitchen": true,
+      "Washer": true,
+      "Dryer": true,
+      "Free_parking": false,
+      "Air_conditioning": true,
+      "Heating": true,
+      "TV": true,
+      "Hot_tub": false,
+      "Pool": false,
+      "Gym": false,
+      "Elevator": true,
+      "Wheelchair_accessible": false,
+      "Pets_allowed": false,
+      "Breakfast": false,
+      "Laptop_friendly_workspace": true,
+      "Crib": false,
+      "Hair_dryer": true,
+      "Iron": true,
+      "Essentials": true,
+      "Smoke_alarm": true,
+      "Carbon_monoxide_alarm": true,
+      "Fire_extinguisher": true,
+      "First_aid_kit": true,
+      "Lock_on_bedroom_door": true,
+      "Hangers": true,
+      "Shampoo": true,
+      "Garden_or_backyard": false,
+      "Patio_or_balcony": true,
+      "BBQ_grill": false
+    },
+    "overall_rating": 5,
+    "contact": {
+      "phone": "+1_456_789_012",
+      "email": "contact@moderncityapartment.com",
+      "website": "https://www.moderncityapartment.com"
+    },
+    "links": {
+      "booking_com": "https://www.booking.com/property/moderncityapartment.html",
+      "google_maps": "https://maps.google.com/?q=40.712776,-74.005974"
+    },
+    "added_date": "2023-08-15",
+    "host_id": "667eb9536c7e8cb84a6e1b03",
+    "minimum_nights": 2,
+    "maximum_noghts": 30,
+    "beds_number": 3
+  }
+]

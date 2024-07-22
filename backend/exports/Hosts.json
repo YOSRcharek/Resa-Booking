@@ -1,0 +1,43 @@
+[
+  {
+    "_id": "667eb9536c7e8cb84a6e1b03",
+    "name": "John Doe",
+    "email": "johndoe@example.com",
+    "phone": "+1234567890",
+    "property_id": [
+      "667eb7ed6c7e8cb84a6e1afe",
+      "667eb7ed6c7e8cb84a6e1b00"
+    ],
+    "picture": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_x_medium",
+    "about": "a host description",
+    "government_id": "123",
+    "identity_card": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_x_medium",
+    "identity_verified": true,
+    "birth_date": "2000-03-01",
+    "birth_place": "Tunisia",
+    "rating": {
+      "count": 17,
+      "average": 4.8
+    }
+  },
+  {
+    "_id": "667eb9536c7e8cb84a6e1b04",
+    "name": "Jane Smith",
+    "email": "janesmith@example.com",
+    "phone": "+0987654321",
+    "property_id": [
+      "667eb7ed6c7e8cb84a6e1aff"
+    ],
+    "picture": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_x_medium",
+    "about": "a host description",
+    "government_id": "123",
+    "identity_card": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_x_medium",
+    "identity_verified": false,
+    "birth_date": "2000-01-03",
+    "birth_place": "Tunisia",
+    "rating": {
+      "count": "20",
+      "average": "14"
+    }
+  }
+]

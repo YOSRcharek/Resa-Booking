@@ -1,0 +1,51 @@
+[
+  {
+    "_id": "667ebadc6c7e8cb84a6e1b0c",
+    "property_id": "1",
+    "available_slots": [
+      {
+        "start_time": "2024-06-30T09:00:00Z",
+        "end_time": "2024-06-30T10:00:00Z",
+        "price": "100"
+      },
+      {
+        "start_time": "2024-07-01T11:00:00Z",
+        "end_time": "2024-07-02T12:00:00Z",
+        "price": "120"
+      }
+    ]
+  },
+  {
+    "_id": "667ebadc6c7e8cb84a6e1b0d",
+    "property_id": "667eb7ed6c7e8cb84a6e1aff",
+    "available_slots": [
+      {
+        "start_time": "2024-07-01T14:00:00Z",
+        "end_time": "2024-07-01T15:00:00Z",
+        "price": "100"
+      },
+      {
+        "start_time": "2024-07-01T16:00:00Z",
+        "end_time": "2024-07-02T17:00:00Z",
+        "price": "120"
+      }
+    ]
+  },
+  {
+    "_id": "667ebadc6c7e8cb84a6e1b0e",
+    "property_id": "667eb7ed6c7e8cb84a6e1b00",
+    "price": 120,
+    "available_slots": [
+      {
+        "start_time": "2024-07-02T09:00:00Z",
+        "end_time": "2024-07-04T10:00:00Z",
+        "price": "120"
+      },
+      {
+        "start_time": "2024-07-06T11:00:00Z",
+        "end_time": "2024-07-12T12:00:00Z",
+        "price": "130"
+      }
+    ]
+  }
+]
