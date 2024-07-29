@@ -7,14 +7,14 @@ const hostsRoute = require('./routes/host');
 const propertyRoute = require('./routes/properties');
 const resvRoute = require('./routes/reservations');
 const reviewRoute = require('./routes/reviews');
-const calendarRoute = require('./routes/calendars');
+const AvailabilityRoute = require('./routes/Availability');
 
 app.use(express.json()); // To parse JSON bodies
 app.use(cors()); // Allow cross-origin requests
 
 app.use('/hosts', hostsRoute);
 app.use('/properties', propertyRoute);
-app.use('/calendar', calendarRoute);
+app.use('/Availability', AvailabilityRoute);
 app.use('/reviews', reviewRoute);
 app.use('/reservations', resvRoute);
 

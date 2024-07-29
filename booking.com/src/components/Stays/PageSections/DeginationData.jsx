@@ -1,50 +1,74 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
-// import useTimeout from '../Hooks/useTimeout'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
+
+// Styled components
+const DataContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 20px;
+  margin-top: 10px;
+`;
+
+const DataItem = styled.div`
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: left;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #e9e9e9;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+`;
+
+const ItemTitle = styled.p`
+  color: #4A9AD4;
+  font-size: 15px;
+  margin-bottom: 8px;
+`;
+
+const ItemCount = styled.p`
+  color: #A5A5A5;
+  font-size: 14px;
+  margin-top: 10px;
+`;
 
 const DeginationData = ({ v }) => {
-    const [data, setData] = useState([])
+  const [data, setData] = useState([]);
 
-    useEffect(() => {
-        getData()
-    }, [v])
-    /// const { data } = useFetch(`http://localhost:3001/${page}`);
-    const getData = () => {
-        axios.get("https://manishsinghbhadouria.github.io/api/db.json").then((data) => {
+  useEffect(() => {
+    getData();
+  }, [v]);
 
-            if (v === 'Regions') {
-                setData(data.data[0].regions)
+  const getData = () => {
+    axios.get("https://manishsinghbhadouria.github.io/api/db.json").then((response) => {
+      if (v === 'Regions') {
+        setData(response.data[0].regions);
+      } else if (v === 'Cities') {
+        setData(response.data[0].cities);
+      } else {
+        setData(response.data[0].interests);
+      }
+    });
+  };
 
-            } else if (v === 'Cities') {
-                setData(data.data[0].cities)
+  return (
+    <div>
+      {data && (
+        <DataContainer>
+          {data.map((el) => (
+            <DataItem key={el.name}>
+              <ItemTitle>{el.name}</ItemTitle>
+              <ItemCount>{el.properties}</ItemCount>
+            </DataItem>
+          ))}
+        </DataContainer>
+      )}
+    </div>
+  );
+};
 
-            } else {
-                setData(data.data[0].interests)
-
-            }
-        })
-    }
-
-    return (
-        <div>
-
-            {/* loading ? <div style={{ width: "50px", margin: "50px auto" }}><Loader /></div> : */}
-
-            {data && <div style={{ marginTop: "-10px", display: "grid", gridGap: "20px", gridTemplateColumns: "auto auto auto auto" }}>
-                {
-                    data.map((el) => {
-                        return <div key={el.name} style={{ marginBottom: "-33px", padding: "0" }}>
-                            <p style={{ color: "#4A9AD4", marginBottom: "-12px", fontSize: "15px" }}>{el.name}</p>
-                            <p style={{ color: "#A5A5A5",marginTop: 10, fontSize: "14px" }}>{el.properties}</p>
-                        </div>
-                    })
-                }
-            </div>
-
-            }
-
-        </div>
-    )
-}
-
-export default DeginationData
+export default DeginationData;

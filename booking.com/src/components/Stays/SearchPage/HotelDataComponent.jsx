@@ -1,8 +1,10 @@
-import React from "react";
-import styles from "./HotelDataComponent.module.css";
+
+import "./HotelDataComponent.module.css";
 import {Link} from "react-router-dom";
 
-
+import React, { useState } from 'react';
+import {  FaArrowRight } from 'react-icons/fa';
+import { PiHeartFill  } from "react-icons/pi";
 const HotelDataComponent = (props) => {
     const {
         type,
@@ -24,127 +26,65 @@ const HotelDataComponent = (props) => {
         discountedPrice
     } = props
     const availabilityText = "Check Availability";
-    return (<div className={styles.maindiv}>
-            <div className={styles.imgdiv}>
-                <img src={url} alt="imageofHotel"/>
-            </div>
-            <div className={styles.datadiv}>
-                <h3 className={styles.h3}>{name}  <h6> {type}</h6> </h3>
-           
-                <div> 
-                   
-                    <p
-                        style={{
-                            color: "#0071C2", textDecoration: "underline", cursor: "pointer",
-                        }}
-                    >
-                        {city}
-                    </p>
-                    <p
-                        style={{
-                            color: "#0071C2", textDecoration: "underline", cursor: "pointer",
-                        }}
-                    >
-                    </p>
-                </div>
-                <h5 style={{padding: "0", marginTop: "4px", marginBottom: "6px"}}>
-                    {roomSize}
-                </h5>
-                <p style={{padding: "0", margin: "0", fontSize: "13px"}}>{bedSize}</p>
-                <h5
-                    style={{
-                        color: "green", padding: "0", marginTop: "6px", marginBottom: "0",
-                    }}
-                >
-                    Breakfast {breakFast}
-                </h5>
-                <h5
-                    style={{
-                        color: "green", padding: "0", marginTop: "3px", marginBottom: "0",
-                    }}
-                >
-                    {cancellation} cancellation • {cancelationPolicy}
-                </h5>
-                <p
-                    style={{
-                        padding: "0", margin: "0", fontSize: "13px", color: "green", marginTop: "6px",
-                    }}
-                >
-                    You can cancel later, so lock in this great price today!
-                </p>
-             
-            </div>
-            <div>
-                <div style={{display: "flex", float: "right"}}>
-                    <div style={{marginRight: "3px"}}>
-                        <h5 style={{padding: "0", margin: "0", marginTop: "5px", fontSize: "16px", textAlign: "right"}}>
-                            {view}
-                        </h5>
-                        <p
-                            style={{
-                                padding: "0", margin: "0", color: "gray", fontSize: "13px",
-                            }}
-                        >
-                            {reviews} Reviews
-                        </p>
-                    </div>
-                    <div
-                        style={{
-                            backgroundColor: "#003580",
-                            color: "white",
-                            padding: "10px",
-                            marginLeft: "5px", // width: "30px",
-                            fontWeight: "bold",
-                            borderRadius: "5px 5px 5px 5px",
-                        }}
-                    >
-                        {rating}
-                    </div>
-                </div>
+    const [isFavorited, setIsFavorited] = useState(false);
 
-                <div style={{marginTop: "75px", textAlign: "right"}}>
-                    <p
-                        style={{
-                            padding: "0", margin: "0", color: "gray", fontSize: "13px",
-                        }}
-                    >
-                        1 Night, 2 Adults
-                    </p>
-                    <p style={{margin: "0", padding: "0"}}>
-            <span
-                style={{
-                    color: "red", textDecoration: "line-through", fontSize: "14px",
-                }}
-            >
-              ₹ {price}
-            </span>
-                        <span style={{fontSize: "22px", fontWeight: "600"}}>  ₹ {discountedPrice}</span>
-                    </p>
-                    <p
-                        style={{
-                            padding: "0", margin: "0", color: "gray", fontSize: "13px",
-                        }}
-                    >
-                        tax and all
-                    </p>
-                    <Link to={`/search/${id}`} params={{}}>
-                        <button
-                            style={{
-                                backgroundColor: "#0071C2",
-                                color: "white",
-                                border: "none",
-                                borderRadius: "3px",
-                                padding: "15px",
-                                marginTop: "10px",
-                                cursor: "pointer",
-                            }}
-                        >
-                            {availabilityText}
-                        </button>
-                    </Link>
-                </div>
+	const handleFavoriteClick = () => {
+	  setIsFavorited(!isFavorited);
+	};
+    return (
+        <div className="maindiv">
+        <div className="image-section">
+          <img src={url}  className="image" />
+          <div className="overlay">Tous Brunchs sont compris</div>
+          <button className={`heart-icon ${isFavorited ? 'favorited' : ''}`} onClick={handleFavoriteClick}>
+              <PiHeartFill />
+            </button>
+        </div>
+          
+           <div className="datadiv">
+          <h3>{name}  <span className="stars">★★★★</span> </h3>
+          <div className="content-section">
+             <p className="city">
+              <a href="#">{city}</a> - <a href="#">Indiquer sur la carte</a> - 8.7 km du centre
+            </p>
+             <button className="airport-taxi">Taxi aéroport gratuit</button>
+            <div className="room-info">
+              <h5>Chambre Double</h5>
+              <p>{roomSize}</p>
             </div>
-        </div>);
+            <div className="amenities">
+              <p>✔ Tous les repas sont compris</p>
+              <p>✔ Annulation gratuite</p>
+              <p>✔ Aucun prépaiement requis – Payez sur place</p>
+            </div>
+           
+           
+            </div>
+                  
+           </div>
+       
+          <div className="left"> 
+         
+           <div className="rating">
+              
+              <span className="scores-text"><span className='hide'>helloBienhooholi</span>Bien<span className='hide'>h</span></span>
+            
+            
+              <div className="score">7.0</div>
+            </div>
+            <div className="new-booking">Nouveau sur Resa</div>
+            
+            <h5 >{type}</h5>
+            <span className="amount"> <span></span>9 nuits, 2 adultes 
+              <div className="price">TND 3943</div>
+              <div className="amount">Des frais supplémentaires<br></br> peuvent s'appliquer</div></span>
+              <Link to={`/search/${id}`} params={{}}>
+            <button className="availability-button">Voir disponibilité <FaArrowRight /></button>
+               
+                    </Link>
+          </div>
+    
+       </div>);
 };
 
 export {HotelDataComponent};

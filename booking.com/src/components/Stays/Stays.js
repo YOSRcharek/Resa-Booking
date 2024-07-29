@@ -8,7 +8,9 @@ import {NextTrip} from "./PageSections/NextTripDiv/NextTrip";
 import Degination from "./PageSections/Degination";
 import FirstSection from "./PageSections/FirstSection";
 import SecondSection from "./PageSections/SecondSection";
-
+import './Stays.css';
+import ExploreSection from "./place";
+import { CountSection } from "./PageSections/countSection";
 function Stays() {
     const dispatch = useDispatch();
     const suggestions = useSelector(state => state.suggestionsData.suggestions);
@@ -21,15 +23,38 @@ function Stays() {
 
 
     return (<>
-  
-   
-           <div>
-            <MiddleSection />
-            </div>
+  	<div className="hero">
+		<div className="container">
+			<div className="row align-items-center">
+				<div className="col-lg-7">
+					<div className="intro-wrap">
+						<h1 className="mb-5"><span className="d-block">Let's Enjoy Your</span> Trip In <span className="typed-words"></span></h1>
+
+						
+					</div>
+				</div>
+				<div className="col-lg-5">
+					<div className="slides">
+						<img src="assets/images/hero-slider-1.jpg" alt="Image" className="img-fluid active"/>
+						<img src="assets/images/hero-slider-2.jpg" alt="Image" className="img-fluid"/>
+						<img src="assets/images/hero-slider-3.jpg" alt="Image" className="img-fluid"/>
+						<img src="assets/images/hero-slider-4.jpg" alt="Image" className="img-fluid"/>
+						<img src="assets/images/hero-slider-5.jpg" alt="Image" className="img-fluid"/>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+  <div>
+     
+      <ExploreSection />
+    </div>
            
-            <div>
+            <MiddleSection />
+           
             <HomeGuestsDiv />
-            </div>
+          <CountSection/>
             <div>
             <Degination />
             </div>

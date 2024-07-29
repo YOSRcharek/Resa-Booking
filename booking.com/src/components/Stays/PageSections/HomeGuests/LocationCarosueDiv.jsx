@@ -1,62 +1,11 @@
-
-import {getExporePlaces} from "../../../../actions/exporePlacesAction";
-import styled from "styled-components";
-import { CarouselDiv } from "./CarosueDiv";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { useEffect,useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import PlacesExploreData from "./placesExploreData";
+import styled from "styled-components";
 import axios from 'axios';
+import { CarouselDiv } from "./CarosueDiv";
 
-const Box = styled.div`
-  width: 240px;
-  overflow: hidden;
-  margin: 0;
 
-  h1, p {
-    margin: 0;
-    color: #fff;
-  }
-`;
 
-const ImgDiv = styled.div`
-  height: 180px;
-  background-position: center;
-  background-size: cover;
-  position: relative;
-`;
-
-const ImgText = styled.div`
-  position: absolute;
-  padding: 11px;
-  bottom: 0;
-  left: 0;
-  width: 90%;
-  margin-bottom: 0;
-  background: linear-gradient(0deg, #000 0, rgba(0, 0, 0, .8) 50%, transparent);
-
-  h1 {
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 24px;
-  }
-
-  p {
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 20px;
-  }
-`;
-
-const A = styled.div`
-  a {
-    text-overflow: ellipsis;
-    text-decoration: none;
-    margin-right: 10px;
-    font-size: 14px;
-    color: black;
-  }
-`;
 export const LocationCarosueDiv = () => {
   const history = useHistory();
   const [locations, setLocations] = useState([]);
@@ -76,10 +25,10 @@ export const LocationCarosueDiv = () => {
     };
 
     fetchData();
-  }, []); // Empty dependency array to run effect only once
+  }, []);
 
-  const handleNavigation = (destination,articles) => {
-    history.push(`/searchPlace/${destination}`, { articles,destination });
+  const handleNavigation = (destination, articles) => {
+    history.push(`/searchPlace/${destination}`, { articles, destination });
   };
 
   if (loading) {
@@ -91,23 +40,95 @@ export const LocationCarosueDiv = () => {
   }
 
   return (
-    <CarouselDiv>
-      {locations.map((location, index) => (
-        <Box key={index} onClick={() => handleNavigation(location.name,location.article)}>
-          <ImgDiv style={{ backgroundImage: `url(${location.image})` }}>
-            <ImgText>
-              <h1>{location.name}</h1>
-              <p>{location.country}</p>
+    <div className="untree_co-section">
+		<div className="container">
+			<div className="row justify-content-center text-center mb-5">
+				<div className="col-lg-6">
+					<h2 className="section-title text-center mb-3">Special Offers &amp; Discounts</h2>
+					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+				</div>
+			</div>
+			<div className="row">
+				<div className="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+					<div className="media-1">
+						<a href="#" className="d-block mb-3"><img src="assets/images/hero-slider-1.jpg" alt="Image" className="img-fluid"/></a>
+						<span className="d-flex align-items-center loc mb-2">
+							<span className="icon-room mr-3"></span>
+							<span>Italy</span>
+						</span>
+						<div className="d-flex align-items-center">
+							<div>
+								<h3><a href="#">Rialto Mountains</a></h3>
+								<div className="price ml-auto">
+									<span>$520.00</span>
+								</div>
+							</div>
+							
+						</div>
+						
+					</div>
+				</div>
+				<div className="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+					<div className="media-1">
+						<a href="#" className="d-block mb-3"><img src="assets/images/hero-slider-2.jpg" alt="Image" className="img-fluid"/></a>
+						<span className="d-flex align-items-center loc mb-2">
+							<span className="icon-room mr-3"></span>
+							<span>United States</span>
+						</span>
+						<div className="d-flex align-items-center">
+							<div>
+								<h3><a href="#">San Francisco</a></h3>
+								<div className="price ml-auto">
+									<span>$520.00</span>
+								</div>
+							</div>
+							
+						</div>
+						
+					</div>
+				</div>
+				<div className="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+					<div className="media-1">
+						<a href="#" className="d-block mb-3"><img src="assets/images/hero-slider-3.jpg" alt="Image" className="img-fluid"/></a>
+						<span className="d-flex align-items-center loc mb-2">
+							<span className="icon-room mr-3"></span>
+							<span>Malaysia</span>
+						</span>
+						<div className="d-flex align-items-center">
+							<div>
+								<h3><a href="#">Perhentian Islands</a></h3>
+								<div className="price ml-auto">
+									<span>$750.00</span>
+								</div>
+							</div>
+							
+						</div>
+						
+					</div>
+				</div>
+				<div className="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
+					<div className="media-1">
+						<a href="#" className="d-block mb-3"><img src="assets/images/hero-slider-4.jpg" alt="Image" className="img-fluid"/></a>
 
-            </ImgText>
-          </ImgDiv>
-          <A>
-            {location.properties.map((property, idx) => (
-              <a key={idx} href="/">{property}</a>
-            ))}
-          </A>
-        </Box>
-      ))}
-    </CarouselDiv>
+						<span className="d-flex align-items-center loc mb-2">
+							<span className="icon-room mr-3"></span>
+							<span>Switzerland</span>
+						</span>
+
+						<div className="d-flex align-items-center">
+							<div>
+								<h3><a href="#">Lake Thun</a></h3>
+								<div className="price ml-auto">
+									<span>$520.00</span>
+								</div>
+							</div>
+							
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
   );
 };

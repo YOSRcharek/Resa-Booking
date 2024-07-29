@@ -61,6 +61,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+
 // UPDATE: Update a property by ID
 router.put('/:id', async (req, res) => {
   try {

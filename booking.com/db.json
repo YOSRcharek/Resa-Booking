@@ -565,7 +565,7 @@
     {
       "name": "New York",
       "country": "United States",
-      "image": "URL de l'image de New York",
+      "image": "https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcQbnTF5aAd-3KT7Pr8OqybFSeapFi5XTe6HqOXsJJIiCkUt-dz0su29IwOjWiJQAgcssBMZa09OM_iCGlT9fPuL40szyrfinQ6g_EFvVg",
       "article": [
         {
           "title": "Explore New York City",
@@ -590,7 +590,7 @@
     {
       "name": "Amsterdam",
       "country": "Netherlands",
-      "image": "https://cf.bstatic.com/xdata/images/city/400x300/972588.webp?k=5ebdb1721f249f78e1007361b6b5a57179490bc316d508a448c7e9034e512d24&o=",  
+      "image": "https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcRdaLhkU3kvcA_IM3pd9YAEYpV5WUdAJILvcGgDl-8gVQCZ8eWul6HboQEFNLnwZEvi_CePHEXyGmMKlICr-6DhUSy8n-M6NH7NG_Gh5A",  
       "article": [
         {
           "title": "Les Canaux d'Amsterdam",
@@ -611,7 +611,7 @@
     {
       "name": "Delhi",
       "country": "India",
-      "image": "https://cf.bstatic.com/xdata/images/city/400x300/684770.webp?k=221802a90ad365c271125637ebf0ee9b14f4ddcc18103125505b6eee013019f5&o=",
+      "image": "https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcRR18fIKy8DYxjME9BAtM9ewDnxy1Pap7-2N99Re6G7dzJOuaosUADrpMquwud2pjXpE6lPVTdsy3MGz0Afzz5CQG2b59MmCclKMqo5lfE",
       "article": [
         {
           "title": "Discover the Rich History of New Delhi",

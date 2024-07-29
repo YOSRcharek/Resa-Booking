@@ -16,6 +16,8 @@ import Checkout from "../components/Attractions/pages_and_layouts/checkout/Check
 import {ExplorePlaces} from "../components/Stays/SearchPage/ExplorePlaces";
 import ArticlePage from "../components/Stays/SearchPage/ArticlePage";
 import Article from "../components/Stays/SearchPage/Article";
+import  Index  from "../pages/index";
+
 
 
 export default function AllRoutes(){
@@ -71,6 +73,10 @@ export default function AllRoutes(){
           <Route exact path="/checkout/:id">
            <Checkout/>
           </Route>
+
+
+
+          <Route path="/Home" > <Index></Index></Route>
           </Switch>
         </>
     )
