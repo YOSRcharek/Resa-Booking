@@ -61,7 +61,51 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+router.get('/getByDest/:dest', async (req, res) => {
+  try {
+    const coll = client.db('Resa').collection('Property');
+    const dest = req.params.dest;
+    const property = await coll.find({ 'location.city': dest }).toArray();
 
+
+    res.json(property);
+  } catch (err) {
+    console.error('Error fetching property:', err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+router.get('/getByType/:type', async (req, res) => {
+  try {
+    const coll = client.db('Resa').collection('Property');
+    const dest = req.params.type;
+    const property = await coll.find({ 'type': dest }).toArray();
+
+
+    res.json(property);
+  } catch (err) {
+    console.error('Error fetching property:', err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+router.get('/getImages/:id', async (req, res) => {
+  try {
+    const coll = client.db('Resa').collection('Property');
+    const property = await coll.findOne({ _id: new ObjectId(req.params.id) });
+    if (!property) {
+      return res.status(404).json({ message: 'Property not found' });
+    }
+    const allPhotos = property.apartment_spaces.reduce((acc, space) => {
+      return acc.concat(space.photos);
+    }, []);
+
+    res.json(allPhotos);
+  } catch (err) {
+    console.error('Error fetching property:', err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
 // UPDATE: Update a property by ID
 router.put('/:id', async (req, res) => {
   try {
@@ -97,23 +141,7 @@ router.delete('/:id', async (req, res) => {
 });
 
 
-router.get('/getImages/:id', async (req, res) => {
-  try {
-    const coll = client.db('Resa').collection('Property');
-    const property = await coll.findOne({ _id: new ObjectId(req.params.id) });
-    if (!property) {
-      return res.status(404).json({ message: 'Property not found' });
-    }
-    const allPhotos = property.apartment_spaces.reduce((acc, space) => {
-      return acc.concat(space.photos);
-    }, []);
 
-    res.json(allPhotos);
-  } catch (err) {
-    console.error('Error fetching property:', err);
-    res.status(500).json({ message: 'Server error' });
-  }
-});
 
 
 module.exports = router;

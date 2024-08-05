@@ -12,7 +12,7 @@ function Maps({ pointx, pointy }) {
     longitude: pointy,
     width: '100%',
     height: '700px',
-    zoom: 13,
+    zoom: 11,  // Réduit le zoom initial
   });
 
   const markerPosition = {
@@ -23,14 +23,14 @@ function Maps({ pointx, pointy }) {
   const handleZoomIn = () => {
     setMapx(prevState => ({
       ...prevState,
-      zoom: prevState.zoom + 1
+      zoom: Math.min(prevState.zoom + 1, 20)  // Limite maximale du zoom
     }));
   };
 
   const handleZoomOut = () => {
     setMapx(prevState => ({
       ...prevState,
-      zoom: prevState.zoom - 1
+      zoom: Math.max(prevState.zoom - 1, 1)  // Limite minimale du zoom
     }));
   };
 
@@ -55,7 +55,7 @@ function Maps({ pointx, pointy }) {
 
       {/* Marqueur */}
       <Marker {...markerPosition} offsetTop={-20} offsetLeft={-10}>
-        <div style={{ fontSize: "70px" }}>
+        <div style={{ fontSize: "70px", color: '#075673' }}>
           {/* Icône que vous souhaitez afficher */}
           <MdLocationOn />
         </div>
@@ -71,7 +71,7 @@ const buttonStyle = {
   width: '40px',
   height: '40px',
   borderRadius: '50%',
-  backgroundColor: 'primary',
+  color: '#075673',  // Change la couleur de fond en bleu
   border: '1px solid #ccc',
   cursor: 'pointer',
   margin: '5px',
@@ -79,6 +79,7 @@ const buttonStyle = {
 
 const buttonIconStyle = {
   fontSize: '20px',
+  color: '#075673',  // Change la couleur des icônes en bleu
 };
 
 export default Maps;

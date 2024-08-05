@@ -22,8 +22,14 @@
   
   .property-header {
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
   }
-  
+  .header-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Adjust the gap between the name and the button as needed */
+  }
   
   
   h1 {
@@ -52,16 +58,21 @@
   }
   
   .property-nav a {
-    padding: 10px 15px;
+    padding: 10px 30px;
     margin-right: 5px;
-    color: #0073e6;
+    color: black;
     text-decoration: none;
     font-size: 16px;
     border-bottom: 2px solid transparent;
   }
   
-  .property-nav a:hover, .property-nav a.active {
+   .property-nav a.active {
     border-bottom: 2px solid #0073e6;
+    
+    text-decoration: none;
+  }
+  .property-nav a:hover {
+    text-decoration: none;
   }
   
   .property-actions {
@@ -76,8 +87,11 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    margin-left: 7px;
   }
-  
+  .reserve-btn:hover {
+    background-color: #034f6f;
+  }
   .price-adjust-btn {
     background-color: transparent;
     color: #0073e6;
@@ -169,4 +183,37 @@
     font-size: 16px;
     align-self: flex-start;
   }
+  .iconIoHeart {
+    font-size: 2rem; /* Agrandir les icônes */
+    color: #0073e6; /* Couleur par défaut des icônes */
+    transition: color 0.3s ease; /* Pour une transition douce de la couleur */
+  }
   
+  .iconIoHeart:hover {
+    color: #034f6f; /* Changer la couleur en rouge au survol */
+  }
+  
+  .iconIoHeart-left {
+    margin-left: 690px; /* Ajouter une marge à gauche */
+  }
+  
+  .iconIoHeart-right {
+    margin-left: 7px; /* Espace entre les icônes */
+  }
+  .iconIoPrice {
+    font-size: 1.4rem; /* Agrandir les icônes */
+    color: #0073e6; /* Couleur par défaut des icônes */
+    transition: color 0.3s ease; /* Pour une transition douce de la couleur */
+  }
+  
+  .iconIoPrice:hover {
+    color: #034f6f; /* Changer la couleur en rouge au survol */
+  }
+  
+  .iconIoPrice-left {
+    margin-left: 1015px; /* Ajouter une marge à gauche */
+  }
+  .ajusterTarif{
+    font-weight: 400;
+    margin-top: -15px;
+  }

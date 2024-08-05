@@ -93,7 +93,7 @@ export const BoxDiv = (props) => {
   const history = useHistory();
 
   const handleClick = () => {
-    history.push(`/search/${props.id}`);
+    history.push(`/search/${props.city}/${props.id}`);
   };
 
   return (

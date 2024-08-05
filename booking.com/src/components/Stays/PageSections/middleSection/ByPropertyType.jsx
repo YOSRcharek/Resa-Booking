@@ -13,6 +13,7 @@ import Guesthomes from './image/Guesthomes.png';
 import Hostels from './image/hostels.png';
 import { CarouselDiv } from '../HomeGuests/CarosueDiv';
 
+import { useHistory } from "react-router-dom";
 const items = [
   { image: Hotels, label: "Hôtels", dates: "14 août-23 août, 2 adultes", available: "126 disponibles" },
   { image: Appartment, label: "Appartements", dates: "14 août-23 août, 2 adultes", available: "536 disponibles" },
@@ -27,6 +28,12 @@ const items = [
 ];
 
 function ByPropertyType() {
+  const history = useHistory();
+
+const handleNavigation = (type) => {
+  localStorage.setItem('type', type);
+  history.push('/searchType');
+};
   return (
    
       <div className="travel-planner">
@@ -36,7 +43,7 @@ function ByPropertyType() {
       <div className="destinations">
       <CarouselDiv>
         {items.map((item) => (
-          <div key={item.name} className="destination-card">
+          <div key={item.name} className="destination-card"  onClick={() => handleNavigation(item.label)}>
             <img src={item.image} alt={item.label} />
             <div className="destination-info">
               <h3 className="section-title text-center mb-3">{item.label}</h3>

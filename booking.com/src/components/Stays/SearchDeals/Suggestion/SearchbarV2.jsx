@@ -93,22 +93,16 @@ export function SearchbarV2({setLoading, loading, suggestions, onChange}) {
     const scrollRef = React.useRef();
     const throttleText = useThrottle(q, 1000);
 
-
     React.useEffect(() => {
         onChange(throttleText);
     }, [throttleText, onChange])
     const handleInputChange = (e) => {
         setQ(e.target.value);
         onChange(e.target.value);
-
-        // setTimeout(() => {
-        //     setLoading(false);
-        // }, 5000)
     }
     const handleClear = () => {
         setQ("");
         onChange("")
-        //setLoading(false);
     }
     const handleChangeActiveSuggestions = (e) => {
         switch (e.keyCode) {

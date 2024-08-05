@@ -4,35 +4,53 @@ import {FilteringBox} from "./FilteringBox";
 import {SearchBox} from "./SearchBox";
 import styles from "./SearchBox.module.css";
 import {useDispatch, useSelector} from "react-redux";
-import {useLocation} from "react-router-dom/cjs/react-router-dom";
 import axios from 'axios';
 import FirstSection from "../PageSections/FirstSection";
 import { SearchDeals } from "../SearchDeals/SearchDeals";
 import { Box, Container } from "@mui/material";
 import Maps from "../HotelDetails/TopSection/maps";
 
+import { useLocation,useParams } from 'react-router-dom';
+import { borderRadius } from "@mui/system";
 
 
 export const SearchPage = () => {
-    const location = useLocation();
-  const { destination } = location.state || {};
-  console.log(destination);
-    const hotelData = useSelector(state => state.hotelsData.hotels);
+    
+    const location=useLocation()
+    console.log(location.pathname.split('/')[2]);
+    const destination = location.pathname.split('/')[2] || null;
+    const hotelData = useSelector((state) => state.hotelsData.hotels);
     const [showData, setShowData] = useState(hotelData);
     const [price, setPrice] = useState(false);
-    const prefilledData = useLocation().state;
-    const [properties, setProperties] = useState([]);
-
+    const [propertiesByDest, setPropertiesByDest] = useState([]);
+    const [propertiesCount, setPropertiesCount] = useState(0);
+  
+   
+  
     useEffect(() => {
-      axios.get('http://localhost:3000/properties')
-        .then(response => {
-          setProperties(response.data);
-        })
-        .catch(error => {
-          console.error('There was an error fetching the properties!', error);
-        });
-    }, []);
-
+        if (destination) {
+            axios.get(`http://localhost:3000/properties/api/getByDest/${destination}`)
+                .then(response => {
+                    setPropertiesByDest(response.data);
+                    setPropertiesCount(response.data.length);
+                })
+                .catch(error => {
+                    console.error('There was an error fetching the properties by destination!', error);
+                });
+        } else {
+            axios.get('http://localhost:3000/properties/api')
+                .then(response => {
+                    setPropertiesByDest(response.data);
+                    setPropertiesCount(response.data.length);
+                })
+                .catch(error => {
+                    console.error('There was an error fetching the properties!', error);
+                });
+        }
+    }, [destination]);
+    
+  
+  
     const filterPrice = (e) => {
         if (e.target.name === "price" && e.target.checked) {
             let filteredData = [];
@@ -72,66 +90,65 @@ export const SearchPage = () => {
             setShowData(hotelData);
         }
     };
-
-    const filterSearch = (search) => {
-        const filteredData = hotelData.filter((e) => e.name.toLowerCase().includes(search.toLowerCase()));
-        setShowData(filteredData);
-    };
  
-    return ( 
+    return (
         <div>
-    <SearchDeals suggestions={[]}/> 
-    <Container >
-      <nav className="breadcrumb">
-        <a href="/">Home</a> &gt;
-        <a href="/search">Hôtels</a> &gt;
-        <a href={`/search/`}>Recherche</a> &gt;
-        <a href={`/search/`}>{destination}</a> 
-        <a href={`/search/`}>Résultats de votre recherche</a> 
-       </nav>
-      
-     
-    </Container>
-        <div className={styles.searchPageContainer}>
-          
-            <div className={styles.left}>
-            <Box my={2} style={{ height: '200px' }}>
-                  <Maps pointx={15} pointy={50} />
-                </Box>
-                <FilteringBox filterPrice={filterPrice} filterStar={filterStar} filterPolicy={filterPolicy} />
-            </div>
-            <div style={{ padding: '25px' }}> <h6>{destination} : Nb établissements trouvés</h6>
             <br></br>
-            <div className={styles.hotelListContainer}>
-                {properties.length > 0 ? (
-                    properties.map((e, i) => {
-                        const roomSize = e.apartment_spaces && e.apartment_spaces.length > 0 ? e.apartment_spaces[0].area : 'N/A';
-                        const photoUrl = e.apartment_spaces && e.apartment_spaces.length > 0 && e.apartment_spaces[0].photos && e.apartment_spaces[0].photos.length > 1 
-                            ? e.apartment_spaces[0].photos[1] 
-                            : '';
+            <SearchDeals dest={destination} />
+            <Container>
+                <nav className="breadcrumb">
+                    <a href="/">Home</a> &gt;
+                    <a href="/search">Hôtels</a> &gt;
+                    <a href={`/search/`}>Recherche</a> &gt;
+                    {destination && <a href={`/search/`}>{destination}</a>}&gt;
+                    <a href={`/search/`}>Résultats de votre recherche</a>
+                </nav>
+            </Container>
+            <div className={styles.searchPageContainer}>
+                <div className={styles.left}>
+                    <Box my={2} style={{ height: '200px', borderRadius: '20px', overflow: 'hidden', position: 'relative' }}>
+                        <Maps pointx={15} pointy={50} />
+                        <div style={{ position: 'absolute', top: '135px', left: '130px', zIndex: 1 }}>
+                            <button className={styles.voirCarte}>
+                                Voir sur la carte
+                            </button>
+                        </div>
+                    </Box>
+                    <FilteringBox filterPrice={filterPrice} filterStar={filterStar} filterPolicy={filterPolicy} />
+                </div>
+                <div style={{ padding: '20px' }}>
+                    <h5>{destination ? `${destination} : ${propertiesCount} établissements trouvés` : `${propertiesCount} établissements trouvés`}</h5>
+                    <br></br>
+                    <div className={styles.hotelListContainer}>
+                        {propertiesByDest.length > 0 ? (
+                            propertiesByDest.map((e, i) => {
+                                const roomSize = e.apartment_spaces && e.apartment_spaces.length > 0 ? e.apartment_spaces[0].area : 'N/A';
+                                const photoUrl = e.apartment_spaces && e.apartment_spaces.length > 0 && e.apartment_spaces[0].photos && e.apartment_spaces[0].photos.length > 1
+                                    ? e.apartment_spaces[0].photos[1]
+                                    : '';
 
-                        return (
-                            <HotelDataComponent
-                                key={e._id}
-                                type={e.type}
-                                id={e._id}
-                                name={e.name}
-                                breakFast={e.amenities.breakFast}
-                                city={e.location.city}
-                                roomSize={roomSize}
-                                url={photoUrl}
-                                cancelationPolicy={e.policies.cancelationPolicy}
-                                bedSize={e.beds_number}
-                                rating={e.overall_rating}
-                            />
-                        );
-                    })
-                ) : (
-                    <p>No properties available</p>
-                )}
+                                return (
+                                    <HotelDataComponent
+                                        key={e._id}
+                                        type={e.type}
+                                        id={e._id}
+                                        name={e.name}
+                                        breakFast={e.amenities.breakFast}
+                                        city={e.location.city}
+                                        roomSize={roomSize}
+                                        url={photoUrl}
+                                        cancelationPolicy={e.policies.cancelationPolicy}
+                                        bedSize={e.beds_number}
+                                        rating={e.overall_rating}
+                                    />
+                                );
+                            })
+                        ) : (
+                            <p>No properties available</p>
+                        )}
+                    </div>
+                </div>
             </div>
-        </div>
-        </div>
         </div>
     );
 };

@@ -1,10 +1,11 @@
 
-import "./HotelDataComponent.module.css";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 
 import React, { useState } from 'react';
 import {  FaArrowRight } from 'react-icons/fa';
 import { PiHeartFill  } from "react-icons/pi";
+import styles from "./HotelDataComponent.module.css"
 const HotelDataComponent = (props) => {
     const {
         type,
@@ -25,34 +26,42 @@ const HotelDataComponent = (props) => {
         availableRooms,
         discountedPrice
     } = props
-    const availabilityText = "Check Availability";
     const [isFavorited, setIsFavorited] = useState(false);
 
 	const handleFavoriteClick = () => {
 	  setIsFavorited(!isFavorited);
 	};
+  const history = useHistory();
+
+  const destination = localStorage.getItem('destination');
+  const handleNavigation = () => {
+    history.push(`/search/${destination}/${id}`);
+  };
     return (
-        <div className="maindiv">
-        <div className="image-section">
-          <img src={url}  className="image" />
-          <div className="overlay">Tous Brunchs sont compris</div>
-          <button className={`heart-icon ${isFavorited ? 'favorited' : ''}`} onClick={handleFavoriteClick}>
-              <PiHeartFill />
+        <div className={styles.maindiv}  onClick={() => handleNavigation()}>
+        <div className={styles.ImageSection}>
+          <img src={url}  className={styles.image} />
+          <div className={styles.overlay}>Tous Brunchs sont compris</div>
+          <button
+  className={`${styles.heartIcon} ${isFavorited ? styles.favorited : ''}`}
+  onClick={handleFavoriteClick}
+>    <PiHeartFill />
             </button>
         </div>
           
-           <div className="datadiv">
-          <h3>{name}  <span className="stars">★★★★</span> </h3>
-          <div className="content-section">
-             <p className="city">
+           <div className={styles.datadiv}>
+          <h3>{name}  <span className={styles.stars}>★★★★</span> </h3>
+          <div className={styles.contentSection}>
+             <p className={styles.city}>
               <a href="#">{city}</a> - <a href="#">Indiquer sur la carte</a> - 8.7 km du centre
             </p>
-             <button className="airport-taxi">Taxi aéroport gratuit</button>
-            <div className="room-info">
+             <button className={styles.airportTaxi}>Taxi aéroport gratuit</button>
+            <div className={styles.roomInfo}>
               <h5>Chambre Double</h5>
               <p>{roomSize}</p>
             </div>
-            <div className="amenities">
+            <div className={styles.amenities}>
+            <div className={styles.verticalLine}></div>
               <p>✔ Tous les repas sont compris</p>
               <p>✔ Annulation gratuite</p>
               <p>✔ Aucun prépaiement requis – Payez sur place</p>
@@ -63,25 +72,25 @@ const HotelDataComponent = (props) => {
                   
            </div>
        
-          <div className="left"> 
+          <div className={styles.left}> 
          
-           <div className="rating">
+           <div className={styles.rating}>
               
-              <span className="scores-text"><span className='hide'>helloBienhooholi</span>Bien<span className='hide'>h</span></span>
+              <span className={styles.scoresText}><span className={styles.hide}>helloBienhooholi</span>Bien<span className={styles.hide}>h</span></span>
             
             
-              <div className="score">7.0</div>
+              <div className={styles.score}>7.0</div>
             </div>
-            <div className="new-booking">Nouveau sur Resa</div>
+            <div className={styles.newBooking}>Nouveau sur Resa</div>
             
             <h5 >{type}</h5>
-            <span className="amount"> <span></span>9 nuits, 2 adultes 
-              <div className="price">TND 3943</div>
-              <div className="amount">Des frais supplémentaires<br></br> peuvent s'appliquer</div></span>
-              <Link to={`/search/${id}`} params={{}}>
-            <button className="availability-button">Voir disponibilité <FaArrowRight /></button>
-               
-                    </Link>
+            <span className={styles.amount}> <span></span>9 nuits, 2 adultes 
+              <div className={styles.price}>TND 3943</div>
+              <div className={styles.amount}>Des frais supplémentaires<br></br> peuvent s'appliquer</div></span>
+            
+  <button className={styles.availabilityButton} onClick={() => handleNavigation()}>
+    Voir disponibilité <FaArrowRight />
+  </button>
           </div>
     
        </div>);

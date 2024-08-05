@@ -1,11 +1,12 @@
 import { useState } from "react"
 import { Logout } from "../Login/Login"
 import styles from "./Profile.module.css"
-
+import { useHistory } from "react-router-dom"
 
 export const Profile = () => {
     const data = JSON.parse(localStorage.getItem("login"))
     const [logout, setLogout] = useState(false)
+    const history = useHistory()
     let userData
     if (data) {
         userData = data
@@ -19,7 +20,7 @@ export const Profile = () => {
     const handleLogout = () => {
         localStorage.removeItem("login")
         alert("Successfully Logged Out")
-        document.location.href = "http://localhost:3000/"
+        history.push("/") // Redirect to home page
     }
 
     return <>
@@ -32,11 +33,9 @@ export const Profile = () => {
             </div>
         </div>
         {
-
             logout && <div className={styles.logout} onClick={() => handleLogout()} >
                 <Logout />
             </div>
         }
-
     </>
 }

@@ -6,7 +6,7 @@ import CarSearch from "../components/CarRentalsPage/CarSearch";
 import AttractionIndex from '../components/Attractions/AttractionIndex'
 import ListLanding from "../components/Attractions/pages_and_layouts/attractionPlaceListpage/ListLanding";
 import ViewPlaceLanding from "../components/Attractions/pages_and_layouts/viewPlace/ViewPlaceLanding";
-import Login from "../components/Login/Login";
+import Login from "../components/Login/Loginn";
 import Home from "../components/Home";
 import {SearchPage} from "../components/Stays/SearchPage/SearchPage";
 import {SearchPage2} from "../components/Stays/SearchPage/SearchPage copy";
@@ -17,6 +17,10 @@ import {ExplorePlaces} from "../components/Stays/SearchPage/ExplorePlaces";
 import ArticlePage from "../components/Stays/SearchPage/ArticlePage";
 import Article from "../components/Stays/SearchPage/Article";
 import  Index  from "../pages/index";
+import { Hebergement } from "../components/Stays/SearchPage/Hebergement";
+import SignUp from "../components/Login/Signup";
+import AddProperty from "../components/Login/AddProperty";
+import { Details } from "../components/Stays/HotelDetails/details";
 
 
 
@@ -30,6 +34,12 @@ export default function AllRoutes(){
            
             <Route exact path="/login">
               <Login />
+            </Route>
+            <Route exact path="/signUp">
+              <SignUp />
+            </Route>
+            <Route exact path="/addProperty">
+              <AddProperty />
             </Route>
             <Route exact path="/carrentals">
                 <CarRentals/>
@@ -55,6 +65,12 @@ export default function AllRoutes(){
               <Route exact path="/search">
                   <SearchPage/>
               </Route>
+              <Route exact path="/search/:ville">
+                  <SearchPage/>
+              </Route>
+              <Route exact path="/searchType">
+                  <Hebergement/>
+              </Route>
               <Route exact path="/search2">
                   <SearchPage2/>
               </Route>
@@ -65,7 +81,7 @@ export default function AllRoutes(){
               <Route path="/article"  ><ArticlePage/> </Route>
           <Route path="/articlePage" ><Article/>  </Route>
             
-        <Route path="/search/:id"><HotelDetails/></Route>
+        <Route path="/search/:ville/:id"><Details/></Route>
          
           <Route exact path="/varifyPurchase/:id">
                   <VarifyUser/>

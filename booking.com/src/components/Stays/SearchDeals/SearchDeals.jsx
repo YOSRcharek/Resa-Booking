@@ -6,9 +6,12 @@ import Button from "@mui/material/Button";
 import SearchBar from "./Suggestion/Searchbar";
 import Link from "react-router-dom/es/Link";
 import AppointementBooking from "../SearchPage/appointment-booking";
+import { color } from "@mui/system";
 
+import { useHistory } from 'react-router-dom';
 export const SearchDeals = (props) => {
-    const suggestionPlaces = props.suggestions;
+    const destination = props.dest;
+
     const [startValue, onStartValueChange] = useState(new Date());
     const [endValue, onEndValueChange] = useState(new Date());
     const [startDate, setStartDate] = useState(false)
@@ -21,7 +24,7 @@ export const SearchDeals = (props) => {
     const [children, setChildren] = useState(0)
     const [rooms, setRooms] = useState(2)
 
-    const [query, setQuery] = useState("");
+    const [query, setQuery] = useState(props.dest);
 
 
     const handleStartDate = () => {
@@ -74,6 +77,14 @@ export const SearchDeals = (props) => {
     }
 
 
+    console.log(query);
+    const history = useHistory();
+    const handleNavigation = (dest) => {
+      history.push(`/search/${dest}`);
+      window.location.reload();
+    };
+    console.log('from searchDeals');
+    console.log(destination);
     return <div className={styles.main}>
         <div className={styles.searchDealsContainer}>
             <div className={styles.searchDealsBars}>
@@ -85,7 +96,7 @@ export const SearchDeals = (props) => {
                     </div>
                     <div className={styles.input}>
                         <SearchBar
-                            suggestions={suggestionPlaces}
+                            destination={destination} 
                             onChange={(value) => {
                                 setQuery(value)
                             }}
@@ -129,7 +140,6 @@ export const SearchDeals = (props) => {
                     </div>
                     <div className={styles.calender}>
                         {startDate && <div className={styles.calenderItem}>
-                            <p className={styles.datePicke}>Start Date</p>
                          
                             <AppointementBooking 
                             onChange={(event) => onStartValueChange(new Date(event.valueText))} 
@@ -137,7 +147,6 @@ export const SearchDeals = (props) => {
                         />
                         </div>}
                         {endDate && <div className={styles.calenderItem2}>
-                            <p className={styles.datePicke}>End date</p>
                             <AppointementBooking 
                             onChange={(event) => onEndValueChange(new Date(event.valueText))} 
                             value={endValue} 
@@ -244,24 +253,10 @@ export const SearchDeals = (props) => {
                         </div>
                     </div>}
                 </div>
-                <div className={styles.button}>
-                    <Link to={{
-                        pathname: "/search",
-                        state: {
-                            currentDay,
-                            currentMonth,
-                            currentDayNum,
-                            endDay,
-                            endMonth,
-                            endDayNum,
-                            adults,
-                            children,
-                            rooms,
-                            query
-                        }
-                    }} style={{textDecoration: 'none'}}>
-                        <Button variant="contained">Search</Button>
-                    </Link>
+                <div className={styles.button} onClick={() => handleNavigation(query)}>
+                  
+                        <Button >Search</Button>
+                   
                 </div>
             </div>
             

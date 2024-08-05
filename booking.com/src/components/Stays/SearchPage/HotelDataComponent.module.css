@@ -7,18 +7,21 @@
     /* Define the height */
   }
     
-    .image-section {
-      position: relative;
-      width: 30%;/* Adjust the width of the image section */
-      
-      border-radius: 50px;
-    }
-    
+  .ImageSection {
+    position: relative;
+    width: 30%;
+  }
+  
+  .Image-section {
+    position: relative;
+    width: 30%;
+  }
+  
     .image {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 50px;
+      border-radius: 10px;
     }
     
     .overlay {
@@ -47,7 +50,7 @@
     }
     
     
-    .heart-icon {
+    .heartIcon {
       position: absolute;
       top: 10px;
       right: 10px;
@@ -55,6 +58,19 @@
       font-size: 20px;
     }
     
+    .contentSection {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    
+    .contentSection h2 {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0;
+    }
     .content-section {
       flex: 1;
       display: flex;
@@ -68,7 +84,6 @@
       align-items: center;
       margin: 0;
     }
-    
     .stars {
       color: gold;
     }
@@ -78,7 +93,7 @@
       text-decoration: none;
     }
     
-    .airport-taxi {
+    .airportTaxi {
       background-color: green;
       color: white;
       border: none;
@@ -89,14 +104,15 @@
       width: 70%;
     }
     
-    .room-info h3 {
+    .roomInfo h3 {
       margin: 2px 0 5px;
     }
     
     .amenities p {
-      margin: 1px 0;
+      margin: 1px ;
       font-size: 12px;
       color: green;
+      margin-left: 10px;
     }
     
     .rating {
@@ -124,7 +140,7 @@
       
       text-align: center;
     }
-    .scores-Text {
+    .scoresText {
       color: Black;
       margin-left: 50px;
       margin-right: 15px;
@@ -147,9 +163,9 @@
       font-size: 13px;  
       color: rgba(104, 104, 104, 0.884);
       font-weight: normal;
+    text-align: right;
     }
-    
-    .availability-button {
+    .availabilityButton {
       background-color: #0073e67a;;
       color: white;
       border: none;
@@ -160,9 +176,10 @@
       align-items: center;
       justify-content: space-between;
       margin-top: 10px;
+      text-decoration-line: none;
     }
-    
-    .new-booking {
+   
+    .newBooking {
       background-color: rgb(255, 196, 0);
       color: black;
       border-radius: 5px;
@@ -179,7 +196,7 @@
       gap: 2rem;
       grid-gap: 2rem;
       margin-bottom: 15px;
-      width: fit-content; /* Adjust the width as needed */
+      width:900px; /* Adjust the width as needed */
       height: fit-content;
   
   }
@@ -230,15 +247,22 @@
   .datadiv {
       text-align: left;
       
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
   }
+  .datadiv h3 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+
+
   .left {
-    text-align: right;
-    width: 40%;
-   }
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
   .datadiv > div {
       display: flex;
       justify-content: space-between;
@@ -249,7 +273,7 @@
       padding: 0;
       margin: 0;
   }
-  .heart-icon {
+  .heartIcon {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -267,12 +291,20 @@
     outline: none; /* Remove outline when the button is focused */
   }
   
-  .heart-icon:focus {
+  .heartIcon:focus {
     outline: none; /* Ensure no outline appears when the button is focused */
   }
   
-  .heart-icon.favorited {
+  .heartIcon.favorited {
     color: rgba(255, 0, 0, 0.708); /* Filled heart color */
     background-color: rgb(255, 255, 255);
+  }
+  /* VerticalLine.css */
+  .verticalLine {
+    width: 2px; /* Largeur de la ligne */
+    height: 8%; /* Hauteur de la ligne, ajustez selon vos besoins */
+    background-color: rgba(128, 128, 128, 0.626); /* Couleur de la ligne */
+    position: absolute; 
+  /* Positionnez selon vos besoins */
   }
   

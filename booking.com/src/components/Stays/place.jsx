@@ -26,9 +26,9 @@ const ExploreSection = () => {
   const history = useHistory();
 
   const handleNavigation = (destination) => {
-    history.push(`/search`, { state: { destination } });
+    localStorage.setItem('destination', destination);
+    history.push(`/search/${destination}`);
   };
-  
 
   const [activeTab, setActiveTab] = useState('Plage');
 

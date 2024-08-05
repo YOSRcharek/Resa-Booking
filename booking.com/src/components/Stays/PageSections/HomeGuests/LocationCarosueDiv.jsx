@@ -8,36 +8,14 @@ import { CarouselDiv } from "./CarosueDiv";
 
 export const LocationCarosueDiv = () => {
   const history = useHistory();
-  const [locations, setLocations] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("http://localhost:5000/explorePlaces");
-        setLocations(response.data);
-        setLoading(false);
-      } catch (error) {
-        setError(error.message);
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
+ 
 
   const handleNavigation = (destination, articles) => {
     history.push(`/searchPlace/${destination}`, { articles, destination });
   };
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+ 
 
   return (
     <div className="untree_co-section">

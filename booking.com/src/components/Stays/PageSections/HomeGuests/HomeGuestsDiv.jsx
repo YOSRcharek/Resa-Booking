@@ -14,10 +14,18 @@ const [homeData, setHomeData] = useState([]);
 const [loading, setLoading] = useState(true);
 const [error, setError] = useState(null);
 
+const history = useHistory();
+
+const handleNavigation = (destination) => {
+  localStorage.setItem('destination', destination);
+  history.push(`/search/${destination}`);
+};
+
+
 useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/properties");
+        const response = await axios.get("http://localhost:3000/properties/api");
         const data = response.data;
 		const firstThreeItems = data.slice(0, 3); // Récupérer les 3 premiers éléments
         setHomeData(firstThreeItems);
@@ -47,8 +55,7 @@ useEffect(() => {
 		{homeData.map((i, index) => {
   const photoUrl = i.apartment_spaces && i.apartment_spaces.length > 0 && i.apartment_spaces[0].photos && i.apartment_spaces[0].photos.length > 1 
   ? i.apartment_spaces[0].photos[1] 
-    : ''; // Add a default value or handle cases where photoUrl might be undefined.
-
+    : ''; 
   return (
     <BoxDiv 
       key={index} 
@@ -69,7 +76,7 @@ useEffect(() => {
   <div className="untree_co-section">
 		<div className="container">
 			<div className="row text-center justify-content-center mb-5">
-				<div className="col-lg-7"><h2 className="section-title text-center">Popular Destination</h2></div>
+				<div className="col-lg-7"><h2 className="section-title text-center">Popular type</h2></div>
 			</div>
 
 			<div className="owl-carousel owl-3-slider">

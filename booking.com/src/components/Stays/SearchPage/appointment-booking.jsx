@@ -1,51 +1,54 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Datepicker } from '@mobiscroll/react';
-import './appointment-booking.css';
+import './appointment-booking.css'; // Make sure this file is included
 import { Container } from '@mui/material';
-import {useLocation} from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-function AppointementBooking({ onChange, value}) {
+function AppointementBooking({ onChange, value }) {
   const [singleLabels, setSingleLabels] = useState([]);
   const [singleInvalid, setSingleInvalid] = useState([]);
-  const location=useLocation()
-  const propertyId=location.pathname.split('/')[2]
- 
-  console.log(propertyId);
+  const location = useLocation();
+  const propertyId = location.pathname.split('/')[3];
+
+
   const fetchAvailabilityData = useCallback(async (year, month) => {
     try {
-      const response = await fetch(`http://localhost:3000/Availability/propertyById/${propertyId}`);
+      const response = await fetch(`http://localhost:3000/availabilities/api/propertyById/${propertyId}`);
       const data = await response.json();
-
+  
       const labels = [];
       const invalid = [];
-
+  
       data.forEach(entry => {
         entry.available_slots.forEach(slot => {
           const startDate = new Date(slot.start_time);
           const endDate = new Date(slot.end_time);
-
-          console.log(`Start Date: ${startDate}, End Date: ${endDate}, Price: ${slot.price}`); // Debug: Log slot details
+  
           if (slot.price > 0) {
-            labels.push({
-              start: startDate,
-              end: endDate,
-              title: '$' + slot.price,
-              textColor: '#e1528f',
-            });
+            // Iterate over each day from startDate to endDate
+            let currentDate = new Date(startDate);
+            while (currentDate <= endDate) {
+              labels.push({
+                start: new Date(currentDate),
+                end: new Date(currentDate),
+                title: '$' + slot.price,
+                textColor: '#e1528f',
+              });
+              currentDate.setDate(currentDate.getDate() + 1); // Move to the next day
+            }
           } else {
             invalid.push(startDate);
           }
         });
       });
-
-      console.log('Labels:', labels); // Debug: Log labels
+  
       setSingleLabels(labels);
       setSingleInvalid(invalid);
-      console.log('Fetched data:', data); // Debug: Log fetched data
     } catch (error) {
       console.error('Error fetching availability data:', error);
     }
   }, [propertyId]);
+  
 
   const handlePageLoadingSingle = useCallback((args) => {
     const d = args.firstDay;
@@ -53,7 +56,7 @@ function AppointementBooking({ onChange, value}) {
   }, [fetchAvailabilityData]);
 
   return (
-    <Container>
+    <Container className="mbsc-form-group1" >
       <div className="mbsc-form-group">
         <Datepicker
           theme="ios"
@@ -62,10 +65,12 @@ function AppointementBooking({ onChange, value}) {
           controls={['calendar']}
           labels={singleLabels}
           invalid={singleInvalid}
-          pages="auto"
+          pages={2}
           onPageLoading={handlePageLoadingSingle}
           value={value}
           onChange={onChange}
+          displayMode="inline"
+          className="custom-datepicker" // Apply custom class
         />
       </div>
     </Container>

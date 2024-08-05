@@ -62,7 +62,7 @@ export const HotelDetails = () => {
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/properties/getImages/${id}`);
+        const res = await axios.get(`http://localhost:3000/api/properties/getImages/${id}`);
         setImages(res.data);
         console.log(res.data);
         console.log(id);
@@ -76,7 +76,7 @@ export const HotelDetails = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/properties");
+        const response = await axios.get("http://localhost:3000/api/properties");
         const data = response.data;
         setHomeData(data); 
       } catch (error) {
@@ -108,7 +108,7 @@ export const HotelDetails = () => {
       <nav className="breadcrumb">
         <a href="/">Home</a> &gt;
         <a href="/search">Hôtels</a> &gt;
-        <a href={`/search/${id}`}>{filteredData.name}</a> &gt;
+        <a href={`/search/${id}`}>{filteredData.name}</a> 
 
        </nav>
       
@@ -321,7 +321,6 @@ export const HotelDetails = () => {
    
     <Disponibilite/>
     <div id="Reviews"> <Reviews /></div>
-     
     <div id="Rules"> <Rules/></div>
     <Commentaire/>
     

@@ -19,7 +19,6 @@ import SecurityIcon from '@mui/icons-material/Security';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import LockIcon from '@mui/icons-material/Lock';
 
-// Define the icon mapping
 const amenitiesIcons = {
   WiFi: WifiIcon,
   Kitchen: KitchenIcon,
@@ -49,12 +48,12 @@ const amenitiesIcons = {
 export const Amenities = () => {
   const [amenities, setAmenities] = useState({});
   const location = useLocation();
- const id=location.pathname.split('/')[2]// Extract id from URL
+  const id = location.pathname.split('/')[3]; // Extract id from URL
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/properties/${id}`);
+        const response = await axios.get(`http://localhost:3000/properties/api/${id}`);
         const data = response.data;
         setAmenities(data.amenities); // Assume amenities are within `data.amenities`
       } catch (error) {
@@ -74,14 +73,18 @@ export const Amenities = () => {
         {Object.entries(amenities).map(([key, value]) => {
           if (value) {
             const Icon = amenitiesIcons[key];
-            return (
-              <Grid item xs={6} sm={4} md={3} key={key}>
-                <Box display="flex" alignItems="center">
-                  <Icon style={{ marginRight: '0.5rem' }} />
-                  <Typography variant="body1">{key.replace(/_/g, ' ')}</Typography>
-                </Box>
-              </Grid>
-            );
+            if (Icon) {
+              return (
+                <Grid item xs={6} sm={4} md={3} key={key}>
+                  <Box display="flex" alignItems="center">
+                    <Icon style={{ marginRight: '0.5rem' }} />
+                    <Typography variant="body1">{key.replace(/_/g, ' ')}</Typography>
+                  </Box>
+                </Grid>
+              );
+            } else {
+              console.warn(`No icon found for key: ${key}`);
+            }
           }
           return null;
         })}
