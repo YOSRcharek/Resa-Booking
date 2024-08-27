@@ -62,6 +62,9 @@ let PropertiesService = class PropertiesService {
     async findByDest(dest) {
         return this.propertyModel.find({ 'location.city': dest }).exec();
     }
+    async findByHostsID(host_id) {
+        return this.propertyModel.find({ host_id }).exec();
+    }
     async findByType(type) {
         return this.propertyModel.find({ type }).exec();
     }

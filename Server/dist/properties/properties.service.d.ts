@@ -11,5 +11,6 @@ export declare class PropertiesService {
     remove(id: string): Promise<Property>;
     getImages(id: string): Promise<string[]>;
     findByDest(dest: string): Promise<Property[]>;
+    findByHostsID(host_id: string): Promise<Property[]>;
     findByType(type: string): Promise<Property[]>;
 }

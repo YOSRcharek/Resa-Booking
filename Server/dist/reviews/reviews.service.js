@@ -49,6 +49,19 @@ let ReviewsService = class ReviewsService {
         }
         return deletedReview;
     }
+    async getReviewsByPropertyId(propertyId) {
+        try {
+            const ReviewsEntries = await this.reviewModel.find({ listing_id: propertyId }).exec();
+            if (ReviewsEntries.length === 0) {
+                throw new common_1.NotFoundException('Reviews entries not found');
+            }
+            return ReviewsEntries;
+        }
+        catch (err) {
+            console.error('Error fetching Reviews entries:', err);
+            throw new Error('Error fetching Reviews entries');
+        }
+    }
 };
 exports.ReviewsService = ReviewsService;
 exports.ReviewsService = ReviewsService = __decorate([

@@ -1,6 +1,7 @@
-import { Controller, Post, Get, Param, Body, Put, Delete } from '@nestjs/common';
+import { Controller, Post, Get, Param, Body, Put, Delete, NotFoundException } from '@nestjs/common';
 import { ReviewsService } from './reviews.service';
 import { CreateReviewDto } from './dto/create-review.dto';
+import { Review } from './schemas/review.schema';
 
 @Controller('reviews')
 export class ReviewsController {
@@ -29,5 +30,13 @@ export class ReviewsController {
   @Delete('/api/:id')
   async remove(@Param('id') id: string) {
     return this.reviewsService.remove(id);
+  }
+  @Get('/api/propertyById/:id')
+  async getReviewsByPropertyId(@Param('id') propertyId: string): Promise<Review[]> {
+    try {
+      return await this.reviewsService.getReviewsByPropertyId(propertyId);
+    } catch (err) {
+      throw new NotFoundException('Error fetching Reviews data');
+    }
   }
 }

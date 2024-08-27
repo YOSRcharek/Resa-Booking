@@ -21,6 +21,7 @@ import { Hebergement } from "../components/Stays/SearchPage/Hebergement";
 import SignUp from "../components/Login/Signup";
 import AddProperty from "../components/Login/AddProperty";
 import { Details } from "../components/Stays/HotelDetails/details";
+import { Hosts } from "../components/Hosts/Hosts";
 
 
 
@@ -40,6 +41,9 @@ export default function AllRoutes(){
             </Route>
             <Route exact path="/addProperty">
               <AddProperty />
+            </Route>
+            <Route exact path="/Hosts">
+              <Hosts/>
             </Route>
             <Route exact path="/carrentals">
                 <CarRentals/>

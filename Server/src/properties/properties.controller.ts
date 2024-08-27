@@ -71,7 +71,15 @@ export class PropertiesController {
     }
     return properties;
   }
-
+  @Get('/api/getByHostsID/:HostsID')
+  async getByHostsID(@Param('HostsID') HostsID: string): Promise<Property[]> {
+    console.log(`Received request for HostsID: ${HostsID}`); // Debugging statement
+    const properties = await this.propertiesService.findByHostsID(HostsID);
+    if (!properties.length) {
+      throw new NotFoundException(`No properties found for dest ${HostsID}`);
+    }
+    return properties;
+  }
 
   @Get('/api/getImages/:id')
   async getImages(@Param('id') id: string): Promise<string[]> {
@@ -81,5 +89,7 @@ export class PropertiesController {
     }
     return images;
   }
-  
+
 }
+  
+

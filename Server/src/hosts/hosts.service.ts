@@ -25,7 +25,14 @@ export class HostsService {
     }
     return host;
   }
-
+  async findOneByEmail(email: string): Promise<Host> {
+    const host = await this.hostModel.findOne({ email }).exec();
+    if (!host) {
+      throw new NotFoundException(`Host with email ${email} not found`);
+    }
+    return host;
+  }
+  
   async update(id: string, updateHostDto: UpdateHostDto): Promise<Host> {
     const existingHost = await this.hostModel.findByIdAndUpdate(id, updateHostDto, { new: true }).exec();
     if (!existingHost) {

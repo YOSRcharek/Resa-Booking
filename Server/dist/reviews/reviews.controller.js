@@ -35,6 +35,14 @@ let ReviewsController = class ReviewsController {
     async remove(id) {
         return this.reviewsService.remove(id);
     }
+    async getReviewsByPropertyId(propertyId) {
+        try {
+            return await this.reviewsService.getReviewsByPropertyId(propertyId);
+        }
+        catch (err) {
+            throw new common_1.NotFoundException('Error fetching Reviews data');
+        }
+    }
 };
 exports.ReviewsController = ReviewsController;
 __decorate([
@@ -72,6 +80,13 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], ReviewsController.prototype, "remove", null);
+__decorate([
+    (0, common_1.Get)('/api/propertyById/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], ReviewsController.prototype, "getReviewsByPropertyId", null);
 exports.ReviewsController = ReviewsController = __decorate([
     (0, common_1.Controller)('reviews'),
     __metadata("design:paramtypes", [reviews_service_1.ReviewsService])

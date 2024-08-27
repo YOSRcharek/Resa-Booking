@@ -1,7 +1,7 @@
 import { useState } from "react"
-import { Logout } from "../Login/Login"
 import styles from "./Profile.module.css"
 import { useHistory } from "react-router-dom"
+import { Logout } from "../components/Login/Loginn"
 
 export const Profile = () => {
     const data = JSON.parse(localStorage.getItem("login"))
@@ -24,7 +24,7 @@ export const Profile = () => {
     }
 
     return <>
-        <div className={styles.profile} onClick={() => setLogout(!logout)}>
+        <div className={styles.profile} onClick={() => setLogout(!Logout)}>
             <div>
                 <img src={userData.imageUrl} alt="userprofile" />
             </div>

@@ -4,37 +4,47 @@ import GoogleLogin, {GoogleLogout} from "react-google-login";
 import {Link} from "react-router-dom";
 import "./styleLogin.css";
 import { initializeFormToggle } from "./formToggle";
-
-
+import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 const Login = () => {
+  console.log("hekpoekk LOOOOOOGIN");
+  
   useEffect(() => {
     initializeFormToggle();
   }, []);
-  const [showPassword, setShowPassword] = useState(false);
-  const handleChange = (e) => {
-    let str = e.target.value;
-    if (str.includes("@") && str.includes(".")) {
-      setShowPassword(true);
-    } else {
-      setShowPassword(false);
+ 
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const history = useHistory();
+  const handleSubmit = async (e) => {
+
+    history.push(`/Hosts`);
+  
+    e.preventDefault();
+  
+    try {
+      const response = await axios.post('http://localhost:3000/auth/login', {
+        username,
+        password,
+      });
+  
+      if (response.status === 200 && response.data.access_token) {
+        localStorage.setItem('token', response.data.access_token);
+        localStorage.setItem('login', response.data.access_token);
+        console.log('Login successful');
+      } else {
+       console.log('Login failed');
+      }
+    } catch (error) {
+      console.error('There was an error logging in!', error);
+      console.log('Login failed');
+      console.log(error);
     }
   };
-
-
-  const responseGoogle = (res) => {
-    let data = { ...res.profileObj, events: {} };
-    localStorage.setItem("login", JSON.stringify(data));
-    setTimeout(() => {
-      let data = JSON.parse(localStorage.getItem("login"));
-      if (data) {
-        alert("You have successfully Logged In")
-        document.location.href = "http://localhost:3001/";
-      }
-    }, 5000)
-
-  };
-
+  
+  console.log(username);
+  console.log(password);
   return (
     <section className="SignUp">
     <div className="containerSignUp" id="containerSignUp">
@@ -64,10 +74,14 @@ const Login = () => {
             <a href="#" className="icon"><i className="fa-brands fa-linkedin-in"></i></a>
           </div>
           <span>or use your email password</span>
-          <input type="email" placeholder="Email"/>
-          <input type="password" placeholder="Password"/>
+          <input type="email" placeholder="Email"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}/>
+          <input type="password" placeholder="Password"  
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}/>
           <a href="#">Forget Your Password?</a>
-          <button type="submit">Sign In</button>
+          <button type="submit" onClick={handleSubmit}>Sign In</button>
         </form>
       </div>
       <div className="toggle-containerSignUp">

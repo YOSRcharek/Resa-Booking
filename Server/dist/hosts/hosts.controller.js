@@ -30,6 +30,9 @@ let HostsController = class HostsController {
     async findOne(id) {
         return await this.hostsService.findOne(id);
     }
+    async findOneByEmail(email) {
+        return await this.hostsService.findOneByEmail(email);
+    }
     async update(id, updateHostDto) {
         return await this.hostsService.update(id, updateHostDto);
     }
@@ -58,6 +61,13 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], HostsController.prototype, "findOne", null);
+__decorate([
+    (0, common_1.Get)('/api/getByEmail/:email'),
+    __param(0, (0, common_1.Param)('email')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], HostsController.prototype, "findOneByEmail", null);
 __decorate([
     (0, common_1.Put)('/api/:id'),
     __param(0, (0, common_1.Param)('id')),

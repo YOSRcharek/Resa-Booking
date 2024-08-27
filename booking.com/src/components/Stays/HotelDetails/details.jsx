@@ -65,7 +65,6 @@ export const Details = () => {
   return (
     
     <>
-    <FirstSection destination={hotel.location?.city}/>
       <Container  style={{ marginTop: '2rem',marginLeft:'150px',marginRight:'150px',paddingRight:'350px' }}>
     <div className="App">
       <nav className="breadcrumb">

@@ -16,5 +16,6 @@ export declare class PropertiesController {
     remove(id: string): Promise<Property>;
     getByType(type: string): Promise<Property[]>;
     getByDest(dest: string): Promise<Property[]>;
+    getByHostsID(HostsID: string): Promise<Property[]>;
     getImages(id: string): Promise<string[]>;
 }

@@ -53,10 +53,13 @@ export class PropertiesService {
     return allPhotos;
   }
 
+  
   async findByDest(dest: string): Promise<Property[]> {
     return this.propertyModel.find({ 'location.city': dest }).exec();
   }
-
+  async findByHostsID(host_id: string): Promise<Property[]> {
+    return this.propertyModel.find({ host_id}).exec();
+  }
   async findByType(type: string): Promise<Property[]> {
     return this.propertyModel.find({ type }).exec();
   }

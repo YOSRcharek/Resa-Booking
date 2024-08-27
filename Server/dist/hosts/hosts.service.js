@@ -35,6 +35,13 @@ let HostsService = class HostsService {
         }
         return host;
     }
+    async findOneByEmail(email) {
+        const host = await this.hostModel.findOne({ email }).exec();
+        if (!host) {
+            throw new common_1.NotFoundException(`Host with email ${email} not found`);
+        }
+        return host;
+    }
     async update(id, updateHostDto) {
         const existingHost = await this.hostModel.findByIdAndUpdate(id, updateHostDto, { new: true }).exec();
         if (!existingHost) {

@@ -17,6 +17,9 @@ const reservations_module_1 = require("./reservations/reservations.module");
 const reviews_module_1 = require("./reviews/reviews.module");
 const availability_module_1 = require("./availability/availability.module");
 const cors_middleware_1 = require("./cors.middleware");
+const auth_module_1 = require("./auth/auth.module");
+const users_module_1 = require("./users/users.module");
+const stripe_module_1 = require("./stripe/stripe.module");
 let AppModule = class AppModule {
     configure(consumer) {
         consumer.apply(cors_middleware_1.Cors).forRoutes('*');
@@ -25,7 +28,7 @@ let AppModule = class AppModule {
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [properties_module_1.PropertiesModule, mongoose_1.MongooseModule.forRoot('mongodb+srv://amirch:resa123@resa.8kkkqma.mongodb.net/Resa'), hosts_module_1.HostsModule, reservations_module_1.ReservationsModule, reviews_module_1.ReviewsModule, availability_module_1.AvailabilityModule,
+        imports: [properties_module_1.PropertiesModule, mongoose_1.MongooseModule.forRoot('mongodb+srv://amirch:resa123@resa.8kkkqma.mongodb.net/Resa'), hosts_module_1.HostsModule, reservations_module_1.ReservationsModule, reviews_module_1.ReviewsModule, availability_module_1.AvailabilityModule, auth_module_1.AuthModule, users_module_1.UserModule, stripe_module_1.StripeModule
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

@@ -70,6 +70,14 @@ let PropertiesController = class PropertiesController {
         }
         return properties;
     }
+    async getByHostsID(HostsID) {
+        console.log(`Received request for HostsID: ${HostsID}`);
+        const properties = await this.propertiesService.findByHostsID(HostsID);
+        if (!properties.length) {
+            throw new common_1.NotFoundException(`No properties found for dest ${HostsID}`);
+        }
+        return properties;
+    }
     async getImages(id) {
         const images = await this.propertiesService.getImages(id);
         if (!images) {
@@ -134,6 +142,13 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], PropertiesController.prototype, "getByDest", null);
+__decorate([
+    (0, common_1.Get)('/api/getByHostsID/:HostsID'),
+    __param(0, (0, common_1.Param)('HostsID')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], PropertiesController.prototype, "getByHostsID", null);
 __decorate([
     (0, common_1.Get)('/api/getImages/:id'),
     __param(0, (0, common_1.Param)('id')),

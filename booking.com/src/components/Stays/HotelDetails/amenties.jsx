@@ -6,44 +6,46 @@ import {
   Grid,
   Typography,
 } from '@mui/material';
-import WifiIcon from '@mui/icons-material/Wifi';
-import KitchenIcon from '@mui/icons-material/Kitchen';
-import LocalParkingIcon from '@mui/icons-material/LocalParking';
-import AcUnitIcon from '@mui/icons-material/AcUnit';
-import BathtubIcon from '@mui/icons-material/Bathtub';
-import TvIcon from '@mui/icons-material/Tv';
-import LaptopChromebookIcon from '@mui/icons-material/LaptopChromebook';
-import LocalFloristIcon from '@mui/icons-material/LocalFlorist';
-import SmokeFreeIcon from '@mui/icons-material/SmokeFree';
-import SecurityIcon from '@mui/icons-material/Security';
-import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
-import LockIcon from '@mui/icons-material/Lock';
-
+import { FaWifi, FaSnowflake, FaBath, FaTv, FaLaptop, FaShieldAlt, FaHospital, FaLock } from "react-icons/fa";
+import { GiCarWheel, GiKitchenScale, GiFlowerPot } from "react-icons/gi";
+import { MdSmokeFree } from "react-icons/md";
+import { BiSolidWasher, BiSolidDryer } from "react-icons/bi";
+import { PiHairDryer } from "react-icons/pi";
+import { MdOutlineCrib } from "react-icons/md";
+import { TbIroning3 } from "react-icons/tb";
+import { PiCoatHanger } from "react-icons/pi";
+import { FaFireExtinguisher } from "react-icons/fa";
+import { MdOutlineOutdoorGrill } from "react-icons/md";
+import { FaParking } from "react-icons/fa";
+import { MdDeck } from 'react-icons/md';
+import { FaHome } from 'react-icons/fa';
+import { FaWineBottle } from "react-icons/fa";
 const amenitiesIcons = {
-  WiFi: WifiIcon,
-  Kitchen: KitchenIcon,
-  Free_parking: LocalParkingIcon,
-  Air_conditioning: AcUnitIcon,
-  Heating: BathtubIcon,
-  TV: TvIcon,
-  Washer: LocalParkingIcon,
-  Dryer: LocalParkingIcon,
-  Laptop_friendly_workspace: LaptopChromebookIcon,
-  Crib: WifiIcon,
-  Hair_dryer: WifiIcon,
-  Iron: WifiIcon,
-  Essentials: LocalParkingIcon,
-  Smoke_alarm: SmokeFreeIcon,
-  Carbon_monoxide_alarm: SecurityIcon,
-  Fire_extinguisher: WifiIcon,
-  First_aid_kit: LocalHospitalIcon,
-  Lock_on_bedroom_door: LockIcon,
-  Hangers: WifiIcon,
-  Shampoo: WifiIcon,
-  Garden_or_backyard: LocalFloristIcon,
-  Patio_or_balcony: WifiIcon,
-  BBQ_grill: WifiIcon,
+  WiFi: FaWifi,
+  Kitchen: GiKitchenScale,
+  Free_parking: FaParking,
+  Air_conditioning: FaSnowflake,
+  Heating: FaBath,
+  TV: FaTv,
+  Washer: BiSolidWasher,
+  Dryer: BiSolidDryer,
+  Laptop_friendly_workspace: FaLaptop,
+  Crib: MdOutlineCrib,
+  Hair_dryer: PiHairDryer,
+  Iron: TbIroning3,
+  Essentials: FaHome,
+  Smoke_alarm: MdSmokeFree ,
+  Carbon_monoxide_alarm: FaShieldAlt,
+  Fire_extinguisher: FaFireExtinguisher,
+  First_aid_kit: FaHospital,
+  Lock_on_bedroom_door: FaLock,
+  Hangers: PiCoatHanger,
+  Shampoo: FaWineBottle,
+  Garden_or_backyard:GiFlowerPot,
+  Patio_or_balcony: MdDeck,
+  BBQ_grill: MdOutlineOutdoorGrill,
 };
+
 
 export const Amenities = () => {
   const [amenities, setAmenities] = useState({});
@@ -63,6 +65,42 @@ export const Amenities = () => {
 
     fetchData();
   }, [id]);
+ 
+ /* useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.post(
+          'https://api.stripe.com/v1/checkout/sessions',
+          {
+            
+              success_url: 'https://example.com/success',
+              line_items: [
+                {
+                  price: 'price_1MotwRLkdIwHu7ixYcPLm5uZ',
+                  quantity: 2,
+                },
+              ],
+              mode: 'payment',
+            
+          },
+          {
+            headers: {
+              'Authorization': 'Bearer sk_test_51OPsP7H0uRtrpw0mG6BhPkf7lkSwFzxQ7K0Rvk7SB9EpuSL3DndpfrnJFnvlSKOKQXyvrNpMKMxvtTkZFVWYKXU800SaiXsCBO'
+             
+            }
+          }
+        );
+        const data = response.data;
+        setAmenities(data.amenities); // Assume amenities are within `data.amenities`
+      } catch (error) {
+        console.error('Error fetching amenities data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+*/
 
   return (
     <>
@@ -77,7 +115,7 @@ export const Amenities = () => {
               return (
                 <Grid item xs={6} sm={4} md={3} key={key}>
                   <Box display="flex" alignItems="center">
-                    <Icon style={{ marginRight: '0.5rem' }} />
+                    <Icon style={{ marginRight: '2rem', fontSize: '1.5rem'  }} />
                     <Typography variant="body1">{key.replace(/_/g, ' ')}</Typography>
                   </Box>
                 </Grid>

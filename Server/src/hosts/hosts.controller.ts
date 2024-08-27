@@ -22,6 +22,11 @@ export class HostsController {
     return await this.hostsService.findOne(id);
   }
 
+  @Get('/api/getByEmail/:email')
+  async findOneByEmail(@Param('email') email: string) {
+    return await this.hostsService.findOneByEmail(email);
+  }
+  
   @Put('/api/:id')
   async update(@Param('id') id: string, @Body() updateHostDto: UpdateHostDto) {
     return await this.hostsService.update(id, updateHostDto);
