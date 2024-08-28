@@ -20,9 +20,21 @@ let StripeController = class StripeController {
         this.stripeService = stripeService;
     }
     async createCheckoutSession(body) {
-        const { totalPrice, propertyId, paymentMethodTypes, successUrl, cancelUrl } = body;
-        const session = await this.stripeService.createCheckoutSession(totalPrice, propertyId, paymentMethodTypes, successUrl, cancelUrl);
+        const { totalPrice, property_id, user_id, checkInDate, checkOutDate, adult_guests, minor_guests, paymentMethodTypes, successUrl, cancelUrl, } = body;
+        const session = await this.stripeService.createCheckoutSession(totalPrice, property_id, paymentMethodTypes, successUrl, cancelUrl, user_id, checkInDate, checkOutDate, minor_guests, adult_guests);
         return { url: session.url };
+    }
+    async handleWebhook(req, res, signature) {
+        try {
+            const event = this.stripeService.constructEvent(req.body, signature);
+            console.log('Received event from Stripe:', event.type);
+            await this.stripeService.handleEvent(event);
+            res.status(200).send('Webhook received');
+        }
+        catch (err) {
+            console.error('Webhook handling error:', err.message);
+            res.status(400).send(`Webhook Error: ${err.message}`);
+        }
     }
 };
 exports.StripeController = StripeController;
@@ -33,6 +45,15 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], StripeController.prototype, "createCheckoutSession", null);
+__decorate([
+    (0, common_1.Post)('webhook'),
+    __param(0, (0, common_1.Req)()),
+    __param(1, (0, common_1.Res)()),
+    __param(2, (0, common_1.Headers)('stripe-signature')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object, String]),
+    __metadata("design:returntype", Promise)
+], StripeController.prototype, "handleWebhook", null);
 exports.StripeController = StripeController = __decorate([
     (0, common_1.Controller)('stripe'),
     __metadata("design:paramtypes", [stripe_service_1.StripeService])

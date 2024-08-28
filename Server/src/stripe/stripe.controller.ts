@@ -1,6 +1,7 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Req, Res, Headers } from '@nestjs/common';
 import { StripeService } from './stripe.service';
 import Stripe from 'stripe';
+import { Request, Response } from 'express';
 
 @Controller('stripe')
 export class StripeController {
@@ -9,25 +10,65 @@ export class StripeController {
   @Post('create-checkout-session')
   async createCheckoutSession(
     @Body() body: {
-      totalPrice: number,
-      propertyId: string,
-      paymentMethodTypes: Stripe.Checkout.SessionCreateParams.PaymentMethodType[],
-      successUrl: string,
-      cancelUrl: string
+      totalPrice: number;
+      property_id: string;
+      user_id: string;
+      checkInDate: string;
+      checkOutDate: string;
+      minor_guests: number;
+      adult_guests:number;
+      paymentMethodTypes: Stripe.Checkout.SessionCreateParams.PaymentMethodType[];
+      successUrl: string;
+      cancelUrl: string;
+      
     }
   ) {
-    const { totalPrice, propertyId, paymentMethodTypes, successUrl, cancelUrl } = body;
-
-    // Call the service method with the extracted data
-    const session = await this.stripeService.createCheckoutSession(
+    const {
       totalPrice,
-      propertyId,
+      property_id,
+      user_id,
+      checkInDate,
+      checkOutDate,
+      adult_guests,
+      minor_guests,
       paymentMethodTypes,
       successUrl,
-      cancelUrl
+      cancelUrl,
+    } = body;
+
+    const session = await this.stripeService.createCheckoutSession(
+      totalPrice,
+      property_id,
+      paymentMethodTypes,
+      successUrl,
+      cancelUrl,
+      user_id,
+      checkInDate,
+      checkOutDate,
+      minor_guests,
+      adult_guests
     );
 
-    // Return the session ID to the frontend
     return { url: session.url };
+  }
+
+  @Post('webhook')
+  async handleWebhook(
+    @Req() req: Request,
+    @Res() res: Response,
+    @Headers('stripe-signature') signature: string
+  ) {
+    try {
+      const event = this.stripeService.constructEvent(req.body, signature);
+
+      console.log('Received event from Stripe:', event.type); // Log event type
+
+      await this.stripeService.handleEvent(event);
+
+      res.status(200).send('Webhook received');
+    } catch (err) {
+      console.error('Webhook handling error:', err.message);
+      res.status(400).send(`Webhook Error: ${err.message}`);
+    }
   }
 }
