@@ -53,13 +53,15 @@ cd Resa
 Install dependencies:
 
 # Frontend
+```bash
 cd client
 npm install
-
+```
 # Backend
+```bash
 cd ../server
 npm install
-
+```
 
 Create a .env file in the backend with:
 
@@ -78,13 +80,13 @@ npm run start:dev
 cd ../client
 npm start
 
-🗄️ Database
+# 🗄️ Database
 
 MongoDB is used to store users, properties, bookings, and transactions.
 
 Make sure to create a MongoDB database and update the connection string in your .env file.
 
-🌍 Deployment
+# 🌍 Deployment
 
 This project is deployed on Vercel
  for scalable and efficient hosting.
@@ -98,9 +100,10 @@ Heroku
 
 AWS EC2
 
-📸 Screenshots
+# 📸 Screenshots
 Home Page	Booking Page	Owner Dashboard
 🏠	📅	📊
-👥 Authors
 
-Developed by Your Name
+# 👥 Authors
+
+Developed by Charek Yosr
